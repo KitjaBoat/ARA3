@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B12B6DD2934B01000E1DBFF /* CheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B12B6DC2934B01000E1DBFF /* CheckInViewController.swift */; };
+		1B12B6DF2934B10E00E1DBFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B12B6DE2934B10D00E1DBFF /* MapViewController.swift */; };
+		1B12B6E22934B47E00E1DBFF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B12B6E12934B47E00E1DBFF /* LocationManager.swift */; };
 		1B3A657229309BB20054BBF1 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A657129309BB20054BBF1 /* Font.swift */; };
 		1B3A65752930A91F0054BBF1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A65742930A91F0054BBF1 /* UIColor.swift */; };
 		1B3A65792930AACD0054BBF1 /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A65782930AACD0054BBF1 /* JobDetailViewController.swift */; };
@@ -14,8 +17,8 @@
 		1B3A657D2930AAE20054BBF1 /* JobDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A657C2930AAE20054BBF1 /* JobDetailModel.swift */; };
 		1B3A658A2930CC530054BBF1 /* RemarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A65882930CC530054BBF1 /* RemarkTableViewCell.swift */; };
 		1B3A658B2930CC530054BBF1 /* RemarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3A65892930CC530054BBF1 /* RemarkTableViewCell.xib */; };
-		1B3A658F2930CC6E0054BBF1 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A658D2930CC6E0054BBF1 /* MapTableViewCell.swift */; };
-		1B3A65902930CC6E0054BBF1 /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3A658E2930CC6E0054BBF1 /* MapTableViewCell.xib */; };
+		1B3A658F2930CC6E0054BBF1 /* CustomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A658D2930CC6E0054BBF1 /* CustomeCell.swift */; };
+		1B3A65902930CC6E0054BBF1 /* CustomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B3A658E2930CC6E0054BBF1 /* CustomeCell.xib */; };
 		1B6927D1293055D20085D29F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6927D0293055D20085D29F /* LoginViewModel.swift */; };
 		1B6927D32930560E0085D29F /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6927D22930560E0085D29F /* LoginResponse.swift */; };
 		1B6927D529305E030085D29F /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6927D429305E030085D29F /* RequestLogin.swift */; };
@@ -37,10 +40,12 @@
 		1B9E1E0E292F7B03009EE387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B9E1E0D292F7B03009EE387 /* Assets.xcassets */; };
 		1B9E1E11292F7B03009EE387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B9E1E0F292F7B03009EE387 /* LaunchScreen.storyboard */; };
 		1B9E1E19292F7E46009EE387 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9E1E18292F7E46009EE387 /* LoginViewController.swift */; };
-		1B9F3F39293455180037658A /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B9F3F38293455180037658A /* ContactTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B12B6DC2934B01000E1DBFF /* CheckInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewController.swift; sourceTree = "<group>"; };
+		1B12B6DE2934B10D00E1DBFF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		1B12B6E12934B47E00E1DBFF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1B3A657129309BB20054BBF1 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		1B3A65742930A91F0054BBF1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		1B3A65782930AACD0054BBF1 /* JobDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
@@ -48,8 +53,8 @@
 		1B3A657C2930AAE20054BBF1 /* JobDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailModel.swift; sourceTree = "<group>"; };
 		1B3A65882930CC530054BBF1 /* RemarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemarkTableViewCell.swift; sourceTree = "<group>"; };
 		1B3A65892930CC530054BBF1 /* RemarkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemarkTableViewCell.xib; sourceTree = "<group>"; };
-		1B3A658D2930CC6E0054BBF1 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
-		1B3A658E2930CC6E0054BBF1 /* MapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapTableViewCell.xib; sourceTree = "<group>"; };
+		1B3A658D2930CC6E0054BBF1 /* CustomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeCell.swift; sourceTree = "<group>"; };
+		1B3A658E2930CC6E0054BBF1 /* CustomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomeCell.xib; sourceTree = "<group>"; };
 		1B6927D0293055D20085D29F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1B6927D22930560E0085D29F /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		1B6927D429305E030085D29F /* RequestLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogin.swift; sourceTree = "<group>"; };
@@ -73,7 +78,6 @@
 		1B9E1E10292F7B03009EE387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B9E1E12292F7B03009EE387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B9E1E18292F7E46009EE387 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1B9F3F38293455180037658A /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B12B6DB2934AFE800E1DBFF /* Checkin-Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				1B12B6DC2934B01000E1DBFF /* CheckInViewController.swift */,
+				1B12B6DE2934B10D00E1DBFF /* MapViewController.swift */,
+				1B12B6E12934B47E00E1DBFF /* LocationManager.swift */,
+			);
+			path = "Checkin-Checkout";
+			sourceTree = "<group>";
+		};
 		1B3A657329309BB90054BBF1 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				1B3A65782930AACD0054BBF1 /* JobDetailViewController.swift */,
-				1B9F3F38293455180037658A /* ContactTableViewCell.xib */,
 				1B3A657A2930AADA0054BBF1 /* JobDetailViewModel.swift */,
 				1B3A657C2930AAE20054BBF1 /* JobDetailModel.swift */,
 				1B3A65832930B6E40054BBF1 /* Cell */,
@@ -137,8 +150,8 @@
 		1B3A65912930CC820054BBF1 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				1B3A658D2930CC6E0054BBF1 /* MapTableViewCell.swift */,
-				1B3A658E2930CC6E0054BBF1 /* MapTableViewCell.xib */,
+				1B3A658D2930CC6E0054BBF1 /* CustomeCell.swift */,
+				1B3A658E2930CC6E0054BBF1 /* CustomeCell.xib */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -176,6 +189,7 @@
 		1B6927E9293082420085D29F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				1B12B6DB2934AFE800E1DBFF /* Checkin-Checkout */,
 				1B3A657E2930ADBC0054BBF1 /* JobDetail */,
 				1B6927ED293082670085D29F /* Setting */,
 				1B6927EC2930825A0085D29F /* RejectHistory */,
@@ -304,12 +318,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B9F3F39293455180037658A /* ContactTableViewCell.xib in Resources */,
 				1B6927E729307F190085D29F /* ModuleCellCollectionViewCell.xib in Resources */,
 				1B3A658B2930CC530054BBF1 /* RemarkTableViewCell.xib in Resources */,
 				1B9E1E11292F7B03009EE387 /* LaunchScreen.storyboard in Resources */,
 				1B9E1E0E292F7B03009EE387 /* Assets.xcassets in Resources */,
-				1B3A65902930CC6E0054BBF1 /* MapTableViewCell.xib in Resources */,
+				1B3A65902930CC6E0054BBF1 /* CustomeCell.xib in Resources */,
 				1B9E1E0C292F7AFF009EE387 /* Main.storyboard in Resources */,
 				1B6927FC293099B80085D29F /* NewJobTableViewCell.xib in Resources */,
 			);
@@ -327,11 +340,13 @@
 				1B6927D32930560E0085D29F /* LoginResponse.swift in Sources */,
 				1B6927F1293082D70085D29F /* NewJobViewModel.swift in Sources */,
 				1B3A65752930A91F0054BBF1 /* UIColor.swift in Sources */,
-				1B3A658F2930CC6E0054BBF1 /* MapTableViewCell.swift in Sources */,
+				1B3A658F2930CC6E0054BBF1 /* CustomeCell.swift in Sources */,
 				1B6927E3293079C10085D29F /* Singerton.swift in Sources */,
 				1B6927DF29306EFF0085D29F /* HomeViewModel.swift in Sources */,
+				1B12B6DF2934B10E00E1DBFF /* MapViewController.swift in Sources */,
 				1B6927D1293055D20085D29F /* LoginViewModel.swift in Sources */,
 				1B9E1E19292F7E46009EE387 /* LoginViewController.swift in Sources */,
+				1B12B6DD2934B01000E1DBFF /* CheckInViewController.swift in Sources */,
 				1B6927DC29306EE00085D29F /* HomeViewController.swift in Sources */,
 				1B6927F5293092D10085D29F /* NewJobViewController.swift in Sources */,
 				1B6927E629307F190085D29F /* ModuleCellCollectionViewCell.swift in Sources */,
@@ -343,6 +358,7 @@
 				1B9E1E05292F7AFF009EE387 /* AppDelegate.swift in Sources */,
 				1B3A657D2930AAE20054BBF1 /* JobDetailModel.swift in Sources */,
 				1B6927E129306F0F0085D29F /* HomeModel.swift in Sources */,
+				1B12B6E22934B47E00E1DBFF /* LocationManager.swift in Sources */,
 				1B9E1E07292F7AFF009EE387 /* SceneDelegate.swift in Sources */,
 				1B3A658A2930CC530054BBF1 /* RemarkTableViewCell.swift in Sources */,
 			);

@@ -11,5 +11,11 @@ import UIKit
 struct JobToSetupTableView {
     let title:String
     let icon:UIImage?
-    let handler: (() -> Void)
+//    let handler: (() -> Void)
+}
+
+struct Section {
+    let title:String
+    let value:[JobToSetupTableView]
+    
 }

@@ -8,7 +8,8 @@
 import Foundation
 
 class NewJobViewModel {
-    let jobUrl = "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json"
+//    let jobUrl = "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json"
+    let jobUrl = "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/3_JobList/Data/Data/data.json"
     
     var jobList: [JobMedel]?
     
@@ -33,14 +34,20 @@ class NewJobViewModel {
         requst.setValue("application/json", forHTTPHeaderField: "Content-Type")
         requst.httpBody = jsonData
         
+        
+        
         let task = URLSession.shared.dataTask(with: requst) { data, response, error in
-            guard let data = data else {
-                return
+//            guard let data = data else {
+//                return
+//            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print("error \(httpResponse.statusCode)")
             }
+            
             do { let decode =
-                try JSONDecoder().decode(JobMedel.self, from: data)
-//                self.jobList?.append(decode)
-//                Modules.shared.allow = decode.entries.allowModule
+                try JSONDecoder().decode(JobMedel.self, from: data!)
+
                 completion(decode.entries)
             } catch  {
                 print("error")
@@ -51,3 +58,5 @@ class NewJobViewModel {
     
 }
 }
+
+

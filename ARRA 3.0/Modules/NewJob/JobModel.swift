@@ -104,6 +104,19 @@ struct Condition: Codable {
 struct Warranty: Codable {
     let warrantyNo: String
     let expire, expireSupplier: Int
+    let sparePart: SparePart?
+}
+
+// MARK: - SparePart
+struct SparePart: Codable {
+    let buffers, parts: [Buffer]
+}
+
+// MARK: - Buffer
+struct Buffer: Codable {
+    let uniqueID: Int
+    let name: String
+    let quantity, usage: Int
 }
 
 

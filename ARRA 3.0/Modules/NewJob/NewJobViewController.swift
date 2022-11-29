@@ -46,13 +46,15 @@ class NewJobViewController: UIViewController {
 extension NewJobViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        jobList?.count ?? 0
+        jobList?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewJobTableViewCell", for: indexPath) as! NewJobTableViewCell
+     
         
         if let job = jobList?[indexPath.row] {
+            
             //        cell.titleIcon: job.getIconStatusByStatusID(),
             //        cell.titleFontStyle: nil
             //        cell.subTitleFontStyle: nil
