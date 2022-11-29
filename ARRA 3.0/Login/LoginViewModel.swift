@@ -6,93 +6,140 @@
 //
 
 import Foundation
+import UIKit
+
+
+protocol ClearTextField{
+    func clertext()
+}
 
 class LoginViewModel {
     var loginURL = "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/1_Authentication/AServiceLogin/login.json"
+    var password:String?
+    var reqLogin:RequestLogin?
+    var switcherIsOn:Bool?
+    var delegate:ClearTextField?
+    var respone:LoginResponse?
     
-//    func normalLogin(completionHanler:@escaping(LoginResponse) -> Void) {
-//        let url = URL(string: loginURL)
-//        var urlRequest = URLRequest(url: url!)
-//        let requestLogin = RequestLogin(username: "AAAAA", password: "BBBBBB")
-//
-//
-//        let body = ["module" : "Authentication",
-//                    "traget" : "Login",
-//                    "data" : ["username": "user1",
-//                              "password": "e10adc3949ba59abbe56e057f20f883e",
-//                              "deviceInfo": [
-//                                "deviceName": "iPhone 11 Pro Max",
-//                                "os": "iOS",
-//                                "osVersion": "13.3",
-//                                "macAddress": "EF79184D-F7A4-4265-A556-E9B0588066E3"]
-//                             ]
-//        ] as [String : Any]
-//
-//
-//
-//
-//
-//        urlRequest.httpMethod = "Post"
-//        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-//        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//
-//
-//        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-//
-//            if data != nil {
-//                do {
-//                    let decode = try JSONDecoder().decode(LoginResponse.self, from: data!)
-//                    completionHanler(decode)
-//                }catch {
-//                    print("error")
-//                }
-//            }
-//        }
-//        task.resume()
-//    }
+    func loginChecker(userName:String? , password:String?) -> (Bool, String?) {
+        guard let username = userName else {
+            return (false, "กรุณากรอกชื่อผู้ใช้งาน")
+        }
+        if !(username.count >= 5) {
+            return (false, "ชื่อผู้ใช้งานไม่ถูกต้อง")
+        }
+        
+        guard let password = password else {
+            return (false, "กรุณากรอกรหัสผ่าน")
+        }
+        if !(password.count >= 5) {
+            return (false, "รหัสผ่านไม่ถูกต้อง")
+        }
+        else {
+            self.password = password
+            reqLogin = RequestLogin(username: username,
+                                    password: try? password.MD5()
+            )
+        }
+        return (true, nil)
+    }
     
-    func apiPost(username:String,password:String, completion:@escaping(LoginModelAllowModule)->Void){
+    func startLogin( completionHandler: @escaping (Bool, String?) -> Void ) {
         let url = URL(string: loginURL)
         
         guard let url = url else {
             return
         }
         
-        let uploadData:Dictionary<String, Any> =
-        [
-            "module": "Authentication",
-            "target": "Login",
-            "data":
-                ["username": "\(username)",
-                 "password": "\(password)"],
-            "deviceInfo": [
-                "deviceName": "iPhone 11 Pro Max",
-                "os": "iOS",
-                "osVersion": "13.3",
-                "macAddress": "EF79184D-F7A4-4265-A556-E9B0588066E3"]
-        ]
-        let jsonData = try? JSONSerialization.data(withJSONObject: uploadData, options: [])
-        var requst = URLRequest(url: url)
-        requst.httpMethod = "POST"
-        requst.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        requst.httpBody = jsonData
+        let reqBody = RequestBody(module: "Authentication",
+                                  target: "Login",
+                                  data: reqLogin)
         
-        let task = URLSession.shared.dataTask(with: requst) { data, response, error in
+        print(reqBody.data.password)
+
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(reqBody)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
             guard let data = data else {
                 return
             }
-            do { let decode =
-                try JSONDecoder().decode(LoginModelAllowModule.self, from: data)
-                
-                Modules.shared.allow = decode.entries.allowModule
-                completion(decode)
-            } catch  {
-                print("error")
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let decode =
+                        try JSONDecoder().decode(Welcome.self, from: data)
+                        self.respone = decode.entries
+                        
+                        LoginResponse.current = decode.entries
+                        self.loginCompletionHandler()
+                        completionHandler(true, nil)
+                        
+                    } catch  {
+                        print("errorDecode")
+                    }
+                }
+                else {
+                    print("errorStatusCode \(httpResponse.statusCode)")
+                    completionHandler(false, "\(httpResponse.statusCode)")
+                    //message
+                    //status 2 =
+                }
             }
-
-    }
+        }
         task.resume()
+    }
     
+    func loginCompletionHandler() {
+        guard let switcherIsOn = switcherIsOn else {
+            return
+        }
+        
+        if switcherIsOn{
+            guard let username = reqLogin?.username else {
+                return
+            }
+            
+            guard let password = self.password?.data(using: .utf8)  else {
+                return
+            }
+            try? KeychainManager.save(
+                        username: username,
+                        password: password
+            )
+            
+            let preferences = UserDefaults.standard
+            preferences.set(username, forKey: "KEY_USERNAME")
+            
+            //save login cache
+            if let loginRes = LoginResponse.current{
+                CacheManager.save(loginResponse: loginRes)
+            }
+            
+        }else{
+            guard let username = reqLogin?.username else {
+                return
+            }
+            try? KeychainManager.delete(username: username)
+            
+            let preferences = UserDefaults.standard
+            preferences.removeObject(forKey: "KEY_USERNAME")
+            delegate?.clertext()
+        }
+    }
+    
+    func setupApplication() {
+        
+       
+    }
 }
-}
+
+
+
+

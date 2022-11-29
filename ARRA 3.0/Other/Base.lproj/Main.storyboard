@@ -26,7 +26,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="egA-er-5GB">
-                                <rect key="frame" x="114" y="356.5" width="186.5" height="183"/>
+                                <rect key="frame" x="114" y="357.5" width="186.5" height="181.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HVE-st-WyD">
                                         <rect key="frame" x="0.0" y="0.0" width="186.5" height="18.5"/>
@@ -34,12 +34,12 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bKv-PQ-7L5">
-                                        <rect key="frame" x="0.0" y="46.5" width="186.5" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="46.5" width="186.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="F6v-yb-c6Y">
-                                        <rect key="frame" x="0.0" y="93" width="186.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="91.5" width="186.5" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpP-pp-wub">
                                                 <rect key="frame" x="0.0" y="0.0" width="111.5" height="31"/>
@@ -57,7 +57,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BB-em-ric">
-                                        <rect key="frame" x="0.0" y="152" width="186.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="150.5" width="186.5" height="31"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <color key="tintColor" systemColor="systemBackgroundColor"/>
                                         <state key="normal" title="Button"/>
@@ -76,7 +76,12 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Forget your password ?"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Forget your password ?">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="OpenWebViewForForgetPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fvX-ej-75u"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ARRA-login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="uHf-qD-5k4">
                                 <rect key="frame" x="140" y="281.5" width="134" height="40"/>
@@ -100,6 +105,7 @@
                         <outlet property="buttonLogin" destination="iBh-3u-v5I" id="K1G-vg-OpY"/>
                         <outlet property="mainBoxView" destination="HpD-F7-Bwx" id="8gL-pK-0fv"/>
                         <outlet property="passwordTextField" destination="bKv-PQ-7L5" id="zR3-0r-SHX"/>
+                        <outlet property="switcher" destination="Gfc-P0-CFQ" id="I7R-aT-w8t"/>
                         <outlet property="userNameTextField" destination="HVE-st-WyD" id="4rC-Gk-xq9"/>
                     </connections>
                 </viewController>
@@ -154,43 +160,67 @@
                                 <rect key="frame" x="157" y="776" width="100" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Kj0-pa-XcO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="Znx-XV-LGa"/>
                                     <constraint firstAttribute="height" constant="31" id="jFY-Ow-RE8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="xap-6E-Zgg"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Logout"/>
                                 <connections>
                                     <action selector="reFresh:" destination="V8F-Oc-6zE" eventType="touchUpInside" id="hv3-5F-shk"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v7w-XZ-jso">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v7w-XZ-jso">
                                 <rect key="frame" x="20" y="338" width="374" height="409"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyQ-at-MYg">
+                                <rect key="frame" x="10" y="275" width="142" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="142" id="5kE-bK-v4R"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic_menu_new_job_active" imagePlacement="leading" title="  NewJob" titleAlignment="center">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="pickTable:" destination="V8F-Oc-6zE" eventType="touchUpInside" id="C10-By-kTh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0rg-S3-tUv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cyQ-at-MYg" firstAttribute="top" secondItem="JW7-X4-QTA" secondAttribute="bottom" constant="30" id="0Hl-pA-BG3"/>
+                            <constraint firstItem="v7w-XZ-jso" firstAttribute="top" secondItem="JW7-X4-QTA" secondAttribute="bottom" constant="93" id="5Rt-YG-9WH"/>
                             <constraint firstItem="JW7-X4-QTA" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="20" id="7nK-bv-TsI"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="trailing" secondItem="JW7-X4-QTA" secondAttribute="trailing" constant="20" id="IlE-sS-7GD"/>
                             <constraint firstItem="tV9-4i-OQa" firstAttribute="centerX" secondItem="yZc-FD-6i8" secondAttribute="centerX" id="Uqk-dF-hdI"/>
+                            <constraint firstItem="v7w-XZ-jso" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="20" id="XfN-iJ-05l"/>
+                            <constraint firstItem="0rg-S3-tUv" firstAttribute="trailing" secondItem="v7w-XZ-jso" secondAttribute="trailing" constant="20" id="ZzZ-kd-k3A"/>
+                            <constraint firstItem="tV9-4i-OQa" firstAttribute="top" secondItem="v7w-XZ-jso" secondAttribute="bottom" constant="29" id="bMk-6x-X4Z"/>
                             <constraint firstItem="BaW-rM-P45" firstAttribute="top" secondItem="0rg-S3-tUv" secondAttribute="top" constant="5" id="epg-0J-iME"/>
+                            <constraint firstItem="v7w-XZ-jso" firstAttribute="top" secondItem="cyQ-at-MYg" secondAttribute="bottom" constant="5" id="fEv-lo-5zA"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="bottom" secondItem="JW7-X4-QTA" secondAttribute="bottom" constant="617" id="gjZ-4g-pGd"/>
                             <constraint firstItem="BaW-rM-P45" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="143" id="ixi-Eo-uVb"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="trailing" secondItem="BaW-rM-P45" secondAttribute="trailing" constant="143" id="kTa-38-VtO"/>
+                            <constraint firstItem="cyQ-at-MYg" firstAttribute="leading" secondItem="yZc-FD-6i8" secondAttribute="leading" constant="10" id="lQF-NF-Zav"/>
                             <constraint firstItem="JW7-X4-QTA" firstAttribute="top" secondItem="BaW-rM-P45" secondAttribute="bottom" constant="51" id="rxc-no-Fxh"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="bottom" secondItem="tV9-4i-OQa" secondAttribute="bottom" constant="55" id="u7j-0D-0uV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="JW7-X4-QTA" id="r5o-WZ-8r1"/>
+                        <outlet property="switchTableButton" destination="cyQ-at-MYg" id="wr4-LJ-AYy"/>
+                        <outlet property="tableView" destination="v7w-XZ-jso" id="1os-Md-8GW"/>
                         <segue destination="ZeO-DQ-cSK" kind="presentation" identifier="goToDetail" modalPresentationStyle="fullScreen" id="ivu-Tl-CfT"/>
                         <segue destination="l1R-l9-0Jj" kind="presentation" identifier="GoToCheckIn" modalPresentationStyle="fullScreen" id="jdk-4i-sHN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slc-u0-WCh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="98"/>
+            <point key="canvasLocation" x="973.91304347826099" y="97.767857142857139"/>
         </scene>
         <!--New Job-->
         <scene sceneID="u6k-Yo-tKb">
@@ -357,7 +387,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qUy-99-Ugj">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5fQ-cG-w2f">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0L1-U6-Hh6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0L1-U6-Hh6">
                                 <rect key="frame" x="302" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -433,6 +463,7 @@
         <image name="ic_check_in" width="131.5" height="118.5"/>
         <image name="ic_check_out" width="131.5" height="118.5"/>
         <image name="ic_home" width="24" height="24"/>
+        <image name="ic_menu_new_job_active" width="24" height="24"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -1,47 +1,69 @@
+import UIKit
+
+
+enum WebAPIKey: String {
+    case SELECT = "SELECT"
+    case INSERT = "INSERT"
+    case UPDATE = "UPDATE"
+    case DELETE = "DELETE"
+    case UPLOAD = "UPLOAD"
+}
+
+enum RoleStatus: Int {
+    case DIRECTOR = 1
+    case EXECUTIVE = 2
+    case SALE_MANAGER = 3
+    case PRE_SALE = 4
+    case SALE_SUPERVISOR = 5
+    case SALE = 6
+    case SALE_MA = 30
+}
+
+
+class Welcome: Codable {
+    let status: Int
+    let message: String
+    let entries: LoginResponse
+}
+
+
+class LoginResponse:Codable{
+    
+    static var cacheKey = "Login"
+    static var current: LoginResponse?
+    
+     let user: User?
+     var allowModule: [String]?
+     var webService: [WebService]?
+     var environments: [Environment]?
+     var token: String?
+     var BUSelected: BusinessUnit?
+    
+   
+    
+//    static func getCache() -> LoginResponse? {
+////        if LoginResponse.current == nil {
+////            if let cacheModel = CacheManager.getCache(key: cacheKey), let modelData = cacheModel.data {
+////                LoginResponse.current = LoginResponse( modelData )
+////            }
+////        }
 ////
-////  LoginModel.swift
-////  ARRA 3.0
-////
-////  Created by ARSOFT on 25/11/2565 BE.
-////
-//
-//import Foundation
-//
-//class LoginResponse:Codable {
-//    
-//        let status: Int
-//        let message: String
-//        let entries: Entries
+////        return LoginResponse.current
 //    }
+    
+//    static func shouldLoginEnv() -> Bool {
+//        if let loginResponse = LoginResponse.getCache() {
+//            if loginResponse.environments?.count ?? 0 > 0 {
+//                return true
+//            }
+//        }
 //
-//    // MARK: - Entries
-//    struct Entries: Codable {
-//        let user: User
-//        let allowModule: [String]
-//        let webService: [WebService]
-//        let token: String
+//        return false
 //    }
-//
-//    // MARK: - User
-//    struct User: Codable {
-//        let uniqueID: Int
-//        let name, role: String
-//        let businessUnit: [BusinessUnit]
-//        let autoApproval: Bool
-//    }
-//
-//    // MARK: - BusinessUnit
-//    struct BusinessUnit: Codable {
-//        let uniqueID: Int
-//        let name: String
-//        let roleID: Int
-//        let role: String
-//        let isEnablePipelineOpportunity: Bool
-//    }
-//
-//    // MARK: - WebService
-//    struct WebService: Codable {
-//        let key: String
-//        let url: String
-//    }
-//
+
+  
+}
+
+
+
+
