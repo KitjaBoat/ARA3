@@ -9,7 +9,7 @@ import UIKit
 import DropDown
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var switchTableButton: UIButton!
     
@@ -18,27 +18,6 @@ class HomeViewController: UIViewController {
     var allowModule:[String]?
     var jobList:[JobDetail]?
     let dropMenu = DropDown()
-    
-//    let dropMenu:DropDown = {
-//        let dropMenu = DropDown()
-//        dropMenu.dataSource = (allowModule!)
-//        dropMenu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
-//        dropMenu.customCellConfiguration = {index, title, cell in
-//            guard let cell = cell as? CustomDropDownCell else {
-//                return
-//            }
-//                if title == "NewJob"{
-//                    cell.iconImage.image = UIImage(named: "ic_new_job")
-//                }else if title == "JobList"{
-//                    cell.iconImage.image = UIImage(named: "ic_status_progress")
-//                }else if title == "RejectHistory"{
-//                    cell.iconImage.image = UIImage(named: "ic_new_job")
-//                }
-//            }
-//        return dropMenu
-//    }()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,52 +29,45 @@ class HomeViewController: UIViewController {
         checkPassword()
         checkResponseCache()
         
+        //set button leftside
+        switchTableButton.leftImage(image: UIImage(named: "ic_menu_on_progress_active")!, renderMode: .alwaysOriginal)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewJobTableViewCell", bundle: nil), forCellReuseIdentifier: "NewJobTableViewCell")
-       
+        
         allowModule = LoginResponse.current?.allowModule
         loadData()
         
-       
-            
+        DataFortableView.allowmoduleFortableView = LoginResponse.current?.allowModule
+        
+        
+        
         dropMenu.dataSource = (allowModule!)
         dropMenu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
         dropMenu.customCellConfiguration = {index, title, cell in
-                guard let cell = cell as? CustomDropDownCell else {
-                    return
-                }
-                    if title == "NewJob"{
-                        cell.iconImage.image = UIImage(named: "ic_new_job")
-                    }else if title == "JobList"{
-                        cell.iconImage.image = UIImage(named: "ic_status_progress")
-                    }else if title == "RejectHistory"{
-                        cell.iconImage.image = UIImage(named: "ic_new_job")
-                    }
-                }
-        
-            
+            guard let cell = cell as? CustomDropDownCell else {
+                return
+            }
+            if title == "NewJob"{
+                cell.iconImage.image = UIImage(named: "ic_new_job")
+            }else if title == "JobList"{
+                cell.iconImage.image = UIImage(named: "ic_status_progress")
+            }else if title == "RejectHistory"{
+                cell.iconImage.image = UIImage(named: "ic_new_job")
+            }
+        }
     }
-
+    
     @IBAction func reFresh(_ sender: Any) {
-//        allowModule = Modules.shared.allow
-//        allowModule?.append("Setting")
-//        allowModule?.append("CheckIn - CheckOut")
-//        print(allowModule)
-//        collectionView.reloadData()
-        
-//        let preferences = UserDefaults.standard
-//        preferences.removeObject(forKey: "KEY_USERNAME")
-        
         CacheManager.delete(key: "LOGIN_CACHE")
         self.dismiss(animated: true, completion: nil)
-        
     }
     
     func loadData() {
         homeViewModel.loadJobData { joblist in
-        let mockupJob = joblist[0]
-           
+            let mockupJob = joblist[0]
+            
             var jobListForTable = [JobDetail]()
             for _ in 1...5 {
                 jobListForTable.append(mockupJob)
@@ -106,12 +78,6 @@ class HomeViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-    }
-    
-    func setUpMenuDropdrow() {
-        dropMenu.anchorView = switchTableButton
-        
-        
     }
     
     func checkPassword(){
@@ -126,34 +92,36 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func pickTable(_ sender: Any) {
-        dropMenu.show()
+        let popoverContentController = self.storyboard?.instantiateViewController(withIdentifier: "PopoverViewController") as? PopoverViewController
         
-    }
-    @IBAction func deleteArray(_ sender: Any) {
-        allowModule?.remove(at: 0)
-        print(allowModule?.count)
-        dropMenu.dataSource = (allowModule!)
-        dropMenu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
-        dropMenu.customCellConfiguration = {index, title, cell in
-                guard let cell = cell as? CustomDropDownCell else {
-                    return
-                }
-                    if title == "NewJob"{
-                        cell.iconImage.image = UIImage(named: "ic_new_job")
-                    }else if title == "JobList"{
-                        cell.iconImage.image = UIImage(named: "ic_status_progress")
-                    }else if title == "RejectHistory"{
-                        cell.iconImage.image = UIImage(named: "ic_new_job")
-                    }
-                }
+        let button = sender as? UIButton
+        let buttonFrame = button?.frame ?? CGRect.zero
+        
+        popoverContentController?.modalPresentationStyle = .popover
+        
+        //delegate tab cell
+        popoverContentController?.delegate = self
+        
+        if let popoverPresentationController = popoverContentController?.popoverPresentationController {
+            popoverPresentationController.permittedArrowDirections = .left
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = buttonFrame
+            popoverPresentationController.delegate = self
+            if let popoverController = popoverContentController {
+                present(popoverController, animated: true, completion: nil)
+            }
+        }
     }
     
+    @IBAction func deleteArray(_ sender: Any) {
+        
+    }
 }
 
 extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-       
+        
         return allowModule?.count ?? 0
         
     }
@@ -168,7 +136,7 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "goToDetail", sender: self)
+        //        performSegue(withIdentifier: "goToDetail", sender: self)
         performSegue(withIdentifier: "GoToCheckIn", sender: self)
     }
     
@@ -181,7 +149,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewJobTableViewCell", for: indexPath) as! NewJobTableViewCell
-     
+        
         
         if let job = jobList?[indexPath.row] {
             
@@ -197,7 +165,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
             cell.subTitleSecondRightIcon.image = UIImage(named: "ic_work_expect")
             cell.subTitleSecondRightLabel.text = "\(job.timeline.condition.slaResponse)"
             cell.subTitleThirdIcon.image = UIImage(named: "ic_work_appoint")
-//            cell.subTitleThirdLabel.text =  job.timeline.appointment
+            //            cell.subTitleThirdLabel.text =  job.timeline.appointment
         }
         return cell
     }
@@ -206,8 +174,36 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         let vc = storyboard?.instantiateViewController(withIdentifier: "JobDetailViewController") as! JobDetailViewController
         vc.job = jobList?[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
-
+        
     }
     
     
 }
+
+extension HomeViewController: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
+}
+
+extension HomeViewController:PopoverToHomeDelegate {
+    func tabOnTableViewCellFromPopover(selectedCell: String) {
+        switchTableButton.setTitle(selectedCell, for: .normal)
+        if selectedCell == "JobList" {
+            switchTableButton.leftImage(image: UIImage(named: "ic_menu_on_progress_active")!, renderMode: .alwaysOriginal)
+        }else {
+            switchTableButton.leftImage(image: UIImage(named: "ic_menu_new_job_active")!, renderMode: .alwaysOriginal)
+        }
+    }
+}
+
+

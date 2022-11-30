@@ -171,23 +171,9 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v7w-XZ-jso">
-                                <rect key="frame" x="20" y="338" width="374" height="409"/>
+                                <rect key="frame" x="20" y="327" width="374" height="420"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyQ-at-MYg">
-                                <rect key="frame" x="10" y="275" width="142" height="58"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="142" id="5kE-bK-v4R"/>
-                                </constraints>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_menu_new_job_active" imagePlacement="leading" title="  NewJob" titleAlignment="center">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="pickTable:" destination="V8F-Oc-6zE" eventType="touchUpInside" id="C10-By-kTh"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFX-hd-3N6">
                                 <rect key="frame" x="21" y="776" width="65" height="31"/>
                                 <state key="normal" title="Button"/>
@@ -196,30 +182,49 @@
                                     <action selector="deleteArray:" destination="V8F-Oc-6zE" eventType="touchUpInside" id="Ish-E6-SJf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyQ-at-MYg">
+                                <rect key="frame" x="21" y="259" width="160" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="1An-Rz-qdc"/>
+                                    <constraint firstAttribute="height" constant="58" id="M4a-RT-Jca"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2" maxY="0.0"/>
+                                <state key="normal" title="  NewJob" image="ic_menu_new_job_active">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" image="ic_menu_new_job_active" imagePlacement="leading" title="  NewJob" imagePadding="0.0" titleAlignment="leading">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="default"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="pickTable:" destination="V8F-Oc-6zE" eventType="touchUpInside" id="C10-By-kTh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0rg-S3-tUv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cyQ-at-MYg" firstAttribute="top" secondItem="JW7-X4-QTA" secondAttribute="bottom" constant="30" id="0Hl-pA-BG3"/>
-                            <constraint firstItem="v7w-XZ-jso" firstAttribute="top" secondItem="JW7-X4-QTA" secondAttribute="bottom" constant="93" id="5Rt-YG-9WH"/>
                             <constraint firstItem="JW7-X4-QTA" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="20" id="7nK-bv-TsI"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="trailing" secondItem="JW7-X4-QTA" secondAttribute="trailing" constant="20" id="IlE-sS-7GD"/>
                             <constraint firstItem="tV9-4i-OQa" firstAttribute="centerX" secondItem="yZc-FD-6i8" secondAttribute="centerX" id="Uqk-dF-hdI"/>
                             <constraint firstItem="v7w-XZ-jso" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="20" id="XfN-iJ-05l"/>
+                            <constraint firstItem="cyQ-at-MYg" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="21" id="Xxh-0p-6RI"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="trailing" secondItem="v7w-XZ-jso" secondAttribute="trailing" constant="20" id="ZzZ-kd-k3A"/>
                             <constraint firstItem="tV9-4i-OQa" firstAttribute="top" secondItem="v7w-XZ-jso" secondAttribute="bottom" constant="29" id="bMk-6x-X4Z"/>
                             <constraint firstItem="BaW-rM-P45" firstAttribute="top" secondItem="0rg-S3-tUv" secondAttribute="top" constant="5" id="epg-0J-iME"/>
-                            <constraint firstItem="v7w-XZ-jso" firstAttribute="top" secondItem="cyQ-at-MYg" secondAttribute="bottom" constant="5" id="fEv-lo-5zA"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="bottom" secondItem="JW7-X4-QTA" secondAttribute="bottom" constant="617" id="gjZ-4g-pGd"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="bottom" secondItem="YFX-hd-3N6" secondAttribute="bottom" constant="55" id="h7q-Kz-iBa"/>
                             <constraint firstItem="BaW-rM-P45" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="143" id="ixi-Eo-uVb"/>
+                            <constraint firstItem="v7w-XZ-jso" firstAttribute="top" secondItem="cyQ-at-MYg" secondAttribute="bottom" constant="10" id="jC5-gc-oFu"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="trailing" secondItem="BaW-rM-P45" secondAttribute="trailing" constant="143" id="kTa-38-VtO"/>
-                            <constraint firstItem="cyQ-at-MYg" firstAttribute="leading" secondItem="yZc-FD-6i8" secondAttribute="leading" constant="10" id="lQF-NF-Zav"/>
                             <constraint firstItem="YFX-hd-3N6" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="21" id="rTM-l7-6uM"/>
                             <constraint firstItem="JW7-X4-QTA" firstAttribute="top" secondItem="BaW-rM-P45" secondAttribute="bottom" constant="51" id="rxc-no-Fxh"/>
                             <constraint firstItem="tV9-4i-OQa" firstAttribute="leading" secondItem="YFX-hd-3N6" secondAttribute="trailing" constant="71" id="sI3-Hc-b8Z"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="bottom" secondItem="tV9-4i-OQa" secondAttribute="bottom" constant="55" id="u7j-0D-0uV"/>
                             <constraint firstItem="YFX-hd-3N6" firstAttribute="top" secondItem="v7w-XZ-jso" secondAttribute="bottom" constant="29" id="xRx-rf-ks1"/>
+                            <constraint firstItem="cyQ-at-MYg" firstAttribute="top" secondItem="JW7-X4-QTA" secondAttribute="bottom" constant="14" id="zk7-xm-amV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -469,6 +474,36 @@
             </objects>
             <point key="canvasLocation" x="1808.6956521739132" y="841.74107142857144"/>
         </scene>
+        <!--Popover View Controller-->
+        <scene sceneID="CdD-bi-9pm">
+            <objects>
+                <viewController storyboardIdentifier="PopoverViewController" id="CK7-2C-QKu" customClass="PopoverViewController" customModule="ARRA_3_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BAG-Yt-1AB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yev-9P-BTy">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uCm-UO-6WM"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uCm-UO-6WM" firstAttribute="bottom" secondItem="yev-9P-BTy" secondAttribute="bottom" id="SWT-2I-RxG"/>
+                            <constraint firstItem="yev-9P-BTy" firstAttribute="leading" secondItem="uCm-UO-6WM" secondAttribute="leading" id="UK7-tC-rPN"/>
+                            <constraint firstItem="uCm-UO-6WM" firstAttribute="trailing" secondItem="yev-9P-BTy" secondAttribute="trailing" id="iTh-tz-gNH"/>
+                            <constraint firstItem="yev-9P-BTy" firstAttribute="top" secondItem="uCm-UO-6WM" secondAttribute="top" id="r9x-2U-cRD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="yev-9P-BTy" id="Cq3-xL-O4h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oX8-wy-oMB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5430" y="392"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ARRA-login-logo" width="190" height="40"/>
@@ -488,6 +523,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

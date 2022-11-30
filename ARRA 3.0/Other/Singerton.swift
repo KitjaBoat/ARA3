@@ -7,13 +7,6 @@
 
 import Foundation
 
-class Modules{
-    
-    static let shared = Modules()
-    var allow:[String]?
-    
-    init(){}
-    
-    
-    
+class DataFortableView{
+    static var allowmoduleFortableView:[String]?
 }

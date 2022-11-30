@@ -50,6 +50,9 @@
 		1B9E1E0E292F7B03009EE387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B9E1E0D292F7B03009EE387 /* Assets.xcassets */; };
 		1B9E1E11292F7B03009EE387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B9E1E0F292F7B03009EE387 /* LaunchScreen.storyboard */; };
 		1B9E1E19292F7E46009EE387 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9E1E18292F7E46009EE387 /* LoginViewController.swift */; };
+		1BBCB45F2936F0DC0073A2EF /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBCB45E2936F0DC0073A2EF /* PopoverViewController.swift */; };
+		1BBCB4622936F9940073A2EF /* PopoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBCB4602936F9940073A2EF /* PopoverTableViewCell.swift */; };
+		1BBCB4632936F9940073A2EF /* PopoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBCB4612936F9940073A2EF /* PopoverTableViewCell.xib */; };
 		61841F33E9D0FD2DBB1723EC /* Pods_ARRA_3_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69B55D2E59860969D4D5702 /* Pods_ARRA_3_0.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +102,9 @@
 		1B9E1E10292F7B03009EE387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B9E1E12292F7B03009EE387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B9E1E18292F7E46009EE387 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1BBCB45E2936F0DC0073A2EF /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		1BBCB4602936F9940073A2EF /* PopoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverTableViewCell.swift; sourceTree = "<group>"; };
+		1BBCB4612936F9940073A2EF /* PopoverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopoverTableViewCell.xib; sourceTree = "<group>"; };
 		D0767BB35124AF65C5BCC402 /* Pods-ARRA 3.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARRA 3.0.debug.xcconfig"; path = "Target Support Files/Pods-ARRA 3.0/Pods-ARRA 3.0.debug.xcconfig"; sourceTree = "<group>"; };
 		E2BA60D644D489D1A9B0FF69 /* Pods-ARRA 3.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARRA 3.0.release.xcconfig"; path = "Target Support Files/Pods-ARRA 3.0/Pods-ARRA 3.0.release.xcconfig"; sourceTree = "<group>"; };
 		F69B55D2E59860969D4D5702 /* Pods_ARRA_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARRA_3_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +211,7 @@
 			children = (
 				1B6927DB29306EE00085D29F /* HomeViewController.swift */,
 				1B6927DE29306EFF0085D29F /* HomeViewModel.swift */,
+				1BBCB45E2936F0DC0073A2EF /* PopoverViewController.swift */,
 				1B6927E829307F210085D29F /* Cell */,
 			);
 			path = Home;
@@ -217,6 +224,8 @@
 				1B6927E529307F190085D29F /* ModuleCellCollectionViewCell.xib */,
 				1B3804DD293614EC000ED4C6 /* DropDownCell.swift */,
 				1B3804DE293614EC000ED4C6 /* DropDownCell.xib */,
+				1BBCB4602936F9940073A2EF /* PopoverTableViewCell.swift */,
+				1BBCB4612936F9940073A2EF /* PopoverTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -375,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B6927E729307F190085D29F /* ModuleCellCollectionViewCell.xib in Resources */,
+				1BBCB4632936F9940073A2EF /* PopoverTableViewCell.xib in Resources */,
 				1B3A658B2930CC530054BBF1 /* RemarkTableViewCell.xib in Resources */,
 				1B9E1E11292F7B03009EE387 /* LaunchScreen.storyboard in Resources */,
 				1B9E1E0E292F7B03009EE387 /* Assets.xcassets in Resources */,
@@ -450,6 +460,7 @@
 				1B3804D42935B03F000ED4C6 /* Webservice.swift in Sources */,
 				1B9E1E19292F7E46009EE387 /* LoginViewController.swift in Sources */,
 				1B12B6DD2934B01000E1DBFF /* CheckInViewController.swift in Sources */,
+				1BBCB45F2936F0DC0073A2EF /* PopoverViewController.swift in Sources */,
 				1B6927DC29306EE00085D29F /* HomeViewController.swift in Sources */,
 				1B3804C92935AB4C000ED4C6 /* KeychainManager.swift in Sources */,
 				1B6927F5293092D10085D29F /* NewJobViewController.swift in Sources */,
@@ -468,6 +479,7 @@
 				1B12B6E22934B47E00E1DBFF /* LocationManager.swift in Sources */,
 				1B9E1E07292F7AFF009EE387 /* SceneDelegate.swift in Sources */,
 				1B3A658A2930CC530054BBF1 /* RemarkTableViewCell.swift in Sources */,
+				1BBCB4622936F9940073A2EF /* PopoverTableViewCell.swift in Sources */,
 				1B3804D82935B07D000ED4C6 /* AllowSystem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
