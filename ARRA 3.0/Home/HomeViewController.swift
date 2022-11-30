@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 class HomeViewController: UIViewController {
 
@@ -16,6 +17,27 @@ class HomeViewController: UIViewController {
     let homeViewModel = HomeViewModel()
     var allowModule:[String]?
     var jobList:[JobDetail]?
+    let dropMenu = DropDown()
+    
+//    let dropMenu:DropDown = {
+//        let dropMenu = DropDown()
+//        dropMenu.dataSource = (allowModule!)
+//        dropMenu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+//        dropMenu.customCellConfiguration = {index, title, cell in
+//            guard let cell = cell as? CustomDropDownCell else {
+//                return
+//            }
+//                if title == "NewJob"{
+//                    cell.iconImage.image = UIImage(named: "ic_new_job")
+//                }else if title == "JobList"{
+//                    cell.iconImage.image = UIImage(named: "ic_status_progress")
+//                }else if title == "RejectHistory"{
+//                    cell.iconImage.image = UIImage(named: "ic_new_job")
+//                }
+//            }
+//        return dropMenu
+//    }()
+    
     
     
     override func viewDidLoad() {
@@ -32,21 +54,27 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "NewJobTableViewCell", bundle: nil), forCellReuseIdentifier: "NewJobTableViewCell")
        
+        allowModule = LoginResponse.current?.allowModule
+        loadData()
         
-        homeViewModel.loadJobData { joblist in
-        let mockupJob = joblist[0]
-           
-            var jobListForTable = [JobDetail]()
-            for _ in 1...5 {
-                jobListForTable.append(mockupJob)
-            }
-            self.jobList = jobListForTable
+       
             
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            } 
-        }
+        dropMenu.dataSource = (allowModule!)
+        dropMenu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+        dropMenu.customCellConfiguration = {index, title, cell in
+                guard let cell = cell as? CustomDropDownCell else {
+                    return
+                }
+                    if title == "NewJob"{
+                        cell.iconImage.image = UIImage(named: "ic_new_job")
+                    }else if title == "JobList"{
+                        cell.iconImage.image = UIImage(named: "ic_status_progress")
+                    }else if title == "RejectHistory"{
+                        cell.iconImage.image = UIImage(named: "ic_new_job")
+                    }
+                }
         
+            
     }
 
     @IBAction func reFresh(_ sender: Any) {
@@ -64,6 +92,28 @@ class HomeViewController: UIViewController {
         
     }
     
+    func loadData() {
+        homeViewModel.loadJobData { joblist in
+        let mockupJob = joblist[0]
+           
+            var jobListForTable = [JobDetail]()
+            for _ in 1...5 {
+                jobListForTable.append(mockupJob)
+            }
+            self.jobList = jobListForTable
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func setUpMenuDropdrow() {
+        dropMenu.anchorView = switchTableButton
+        
+        
+    }
+    
     func checkPassword(){
         if let password = UserDefaults.standard.value(forKey: "KEY_USERNAME") as? String{
             let pass = try? KeychainManager.get(username: password)
@@ -76,6 +126,26 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func pickTable(_ sender: Any) {
+        dropMenu.show()
+        
+    }
+    @IBAction func deleteArray(_ sender: Any) {
+        allowModule?.remove(at: 0)
+        print(allowModule?.count)
+        dropMenu.dataSource = (allowModule!)
+        dropMenu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+        dropMenu.customCellConfiguration = {index, title, cell in
+                guard let cell = cell as? CustomDropDownCell else {
+                    return
+                }
+                    if title == "NewJob"{
+                        cell.iconImage.image = UIImage(named: "ic_new_job")
+                    }else if title == "JobList"{
+                        cell.iconImage.image = UIImage(named: "ic_status_progress")
+                    }else if title == "RejectHistory"{
+                        cell.iconImage.image = UIImage(named: "ic_new_job")
+                    }
+                }
     }
     
 }

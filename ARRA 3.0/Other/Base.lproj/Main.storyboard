@@ -188,6 +188,14 @@
                                     <action selector="pickTable:" destination="V8F-Oc-6zE" eventType="touchUpInside" id="C10-By-kTh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFX-hd-3N6">
+                                <rect key="frame" x="21" y="776" width="65" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="delete"/>
+                                <connections>
+                                    <action selector="deleteArray:" destination="V8F-Oc-6zE" eventType="touchUpInside" id="Ish-E6-SJf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0rg-S3-tUv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -203,11 +211,15 @@
                             <constraint firstItem="BaW-rM-P45" firstAttribute="top" secondItem="0rg-S3-tUv" secondAttribute="top" constant="5" id="epg-0J-iME"/>
                             <constraint firstItem="v7w-XZ-jso" firstAttribute="top" secondItem="cyQ-at-MYg" secondAttribute="bottom" constant="5" id="fEv-lo-5zA"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="bottom" secondItem="JW7-X4-QTA" secondAttribute="bottom" constant="617" id="gjZ-4g-pGd"/>
+                            <constraint firstItem="0rg-S3-tUv" firstAttribute="bottom" secondItem="YFX-hd-3N6" secondAttribute="bottom" constant="55" id="h7q-Kz-iBa"/>
                             <constraint firstItem="BaW-rM-P45" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="143" id="ixi-Eo-uVb"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="trailing" secondItem="BaW-rM-P45" secondAttribute="trailing" constant="143" id="kTa-38-VtO"/>
                             <constraint firstItem="cyQ-at-MYg" firstAttribute="leading" secondItem="yZc-FD-6i8" secondAttribute="leading" constant="10" id="lQF-NF-Zav"/>
+                            <constraint firstItem="YFX-hd-3N6" firstAttribute="leading" secondItem="0rg-S3-tUv" secondAttribute="leading" constant="21" id="rTM-l7-6uM"/>
                             <constraint firstItem="JW7-X4-QTA" firstAttribute="top" secondItem="BaW-rM-P45" secondAttribute="bottom" constant="51" id="rxc-no-Fxh"/>
+                            <constraint firstItem="tV9-4i-OQa" firstAttribute="leading" secondItem="YFX-hd-3N6" secondAttribute="trailing" constant="71" id="sI3-Hc-b8Z"/>
                             <constraint firstItem="0rg-S3-tUv" firstAttribute="bottom" secondItem="tV9-4i-OQa" secondAttribute="bottom" constant="55" id="u7j-0D-0uV"/>
+                            <constraint firstItem="YFX-hd-3N6" firstAttribute="top" secondItem="v7w-XZ-jso" secondAttribute="bottom" constant="29" id="xRx-rf-ks1"/>
                         </constraints>
                     </view>
                     <connections>
