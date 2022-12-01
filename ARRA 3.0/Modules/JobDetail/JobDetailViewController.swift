@@ -36,16 +36,16 @@ class JobDetailViewController: UIViewController {
             return
         }
         
-        jobModel.append(Section(title: job.jobTitle, value: [
+        jobModel.append(Section(title: job.jobTitle , value: [
             JobToSetupTableView(title: "\(job.jobStatusID)", icon: nil),
-            JobToSetupTableView(title: "\(job.timeline.opened)", icon: UIImage(named: "ic_work_open")),
-            JobToSetupTableView(title: "\(job.timeline.assignment)", icon: UIImage(named: "ic_work_receive")),
-            JobToSetupTableView(title: "\(job.timeline.condition.slaResponse)", icon: UIImage(named: "ic_work_expect")),
-            JobToSetupTableView(title: "\(job.timeline.condition.slaFixed)", icon: UIImage(named: "ic_work_sla_fixed")),
-            JobToSetupTableView(title: job.problem, icon: UIImage(named: "ic_work_problem")),
-            JobToSetupTableView(title: job.dispatcherRecommend, icon: UIImage(named: "ic_chat")),
-            JobToSetupTableView(title: job.customer.location.address, icon: UIImage(named: "ic_work_location")),
-            JobToSetupTableView(title: job.contactRemark, icon: UIImage(named: "ic_work_remark"))
+            JobToSetupTableView(title: "\(job.timeline!.opened)", icon: UIImage(named: "ic_work_open")),
+            JobToSetupTableView(title: "\(job.timeline!.assignment)", icon: UIImage(named: "ic_work_receive")),
+            JobToSetupTableView(title: "\(job.timeline!.condition.slaResponse)", icon: UIImage(named: "ic_work_expect")),
+            JobToSetupTableView(title: "\(job.timeline!.condition.slaFixed)", icon: UIImage(named: "ic_work_sla_fixed")),
+            JobToSetupTableView(title: job.problem , icon: UIImage(named: "ic_work_problem")),
+            JobToSetupTableView(title: job.dispatcherRecommend ?? "", icon: UIImage(named: "ic_chat")),
+            JobToSetupTableView(title: job.customer.location.address , icon: UIImage(named: "ic_work_location")),
+            JobToSetupTableView(title: job.contactRemark ?? "", icon: UIImage(named: "ic_work_remark"))
         ]))
         
         
@@ -132,17 +132,17 @@ extension JobDetailViewController:UITableViewDelegate,UITableViewDataSource {
             if model.title == Title.ATTACHMENT.rawValue {
                 cell.rightIconmainLabel.isHidden = false
                 cell.rightIconmainLabel
-                    .text = "\(job.attachment.count) file"
+                    .text = "\(job.attachment!.count) file"
                 cell.click.isHidden = false
             }
             if model.title == Title.WARRANTY_Owner.rawValue{
                 cell.headLabel.text = "Owner"
-                cell.mainLabel.text = "\(job.warranty.expire)"
+                cell.mainLabel.text = "\(job.warranty!.expire)"
                 cell.headLabel.isHidden = false
             }
             if model.title == Title.WARRANTY_Supplier.rawValue{
                 cell.headLabel.text = "Supplier"
-                cell.mainLabel.text = "\(job.warranty.expireSupplier)"
+                cell.mainLabel.text = "\(job.warranty!.expireSupplier)"
                 cell.headLabel.isHidden = false
             }
             if model.title == Title.GENERAL_Sn.rawValue{
@@ -157,29 +157,29 @@ extension JobDetailViewController:UITableViewDelegate,UITableViewDataSource {
                 cell.click.isHidden = false
             }
             if model.title == Title.PART_Mp.rawValue{
-                if job.warranty.sparePart?.parts == nil {
+                if job.warranty!.sparePart?.parts == nil {
                     cell.rightIconmainLabel.text = "No Data"
                     
                 }else {
-                    cell.rightIconmainLabel.text = "\(job.warranty.sparePart?.parts.count ?? 0)"
+                    cell.rightIconmainLabel.text = "\(job.warranty!.sparePart?.parts.count ?? 0)"
                 }
                 cell.rightIconmainLabel.isHidden = false
             }
             if model.title == Title.PART_Mb.rawValue{
-                if job.warranty.sparePart?.buffers == nil {
+                if job.warranty!.sparePart?.buffers == nil {
                     cell.rightIconmainLabel.text = "No Data"
                     
                 }else {
-                    cell.rightIconmainLabel.text = "\(job.warranty.sparePart?.buffers.count ?? 0)"
+                    cell.rightIconmainLabel.text = "\(job.warranty!.sparePart?.buffers.count ?? 0)"
                 }
                 cell.rightIconmainLabel.isHidden = false
                 
             }
             if model.title == Title.ENGINEER_Accept.rawValue{
-                let engCanAccept = job.engineer.filter { acp in
+                let engCanAccept = job.engineer!.filter { acp in
                     return acp.accepted == true
                 }
-                cell.rightIconmainLabel.text = "\(engCanAccept.count)/\(job.engineer.count)"
+                cell.rightIconmainLabel.text = "\(engCanAccept.count)/\(job.engineer!.count)"
                 cell.rightIconmainLabel.isHidden = false
                 cell.click.isHidden = false
                

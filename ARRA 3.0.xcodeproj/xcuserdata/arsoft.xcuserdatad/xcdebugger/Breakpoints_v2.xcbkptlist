@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "11BD8833-6F2E-45F6-8B0D-57F752F5956F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ARRA 3.0/Modules/NewJob/NewJobViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "goToHome(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1A7885FE-170C-4FF3-A711-9E148033C0D8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -350,9 +334,9 @@
             filePath = "ARRA 3.0/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "loadJobData(compltion:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "loadJobData(module:compltion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -366,9 +350,9 @@
             filePath = "ARRA 3.0/Home/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "loadJobData(compltion:)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "loadJobData(module:compltion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

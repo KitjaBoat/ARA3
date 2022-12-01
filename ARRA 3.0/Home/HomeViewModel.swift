@@ -8,11 +8,25 @@
 import Foundation
 
 class HomeViewModel {
-    let urlData =  "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/NewASale/12_Home/NotificationCount/data.json"
-    let urlJobData =  "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json"
+//    let urlData =  "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/NewASale/12_Home/NotificationCount/data.json"
+    let newJobUrl =  "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json"
+    let jobListUrl = "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/3_JobList/Data/Data/data.json"
     
-    func loadJobData(compltion:@escaping([JobDetail]) -> Void) {
-        let url = URL(string: urlJobData)
+    func loadJobData(module:String ,compltion:@escaping([JobDetail]) -> Void) {
+        print("Thsi is module \(module)")
+        var urlString:String?
+        
+        if module == Module.Newjob.rawValue {
+            urlString = newJobUrl
+        }
+        else if module == Module.Joblist.rawValue {
+            urlString = jobListUrl
+        }else {
+            urlString = "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/13_RejectHistory/Data/JobRejectList/data.json"
+        }
+        
+        
+        let url = URL(string: urlString!)
         
         guard let url = url else {
             return
@@ -36,6 +50,7 @@ class HomeViewModel {
             }
             
             if let httpResponse = response as? HTTPURLResponse {
+                print(httpResponse.statusCode)
                 if httpResponse.statusCode == 200 {
                     do {
                         let decode =

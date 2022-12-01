@@ -6,6 +6,6 @@ target 'ARRA 3.0' do
   use_frameworks!
 
   # Pods for ARRA 3.0
-pod 'DropDown'
+pod 'SideMenu'
 
 end

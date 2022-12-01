@@ -8,33 +8,52 @@
 import Foundation
 
 
-struct JobMedel: Codable {
-    let status: Int
-    let message: String
-    let entries: [JobDetail]
-}
-
-// MARK: - Entry
-struct JobDetail: Codable {
-    let uniqueID: Int
-    let jobTitle, serialNO, problem, appearance: String
-    let contactRemark: String
-    let jobStatusID: Int
-    let timeline: Timeline
-    let customer: Customer
-    let warranty: Warranty
-    let engineer: [Engineer]
-    let jobProblem, jobSolution: Job
-    let jobTechnicalSupport: JobTechnicalSupport
-    let rejectedBy: String
-    let rejectedDate: Int
-    let rejectedReason: String
-    let partOfUse: [PartOfUse]
-    let attachment: [Attachment]
+//struct JobMedel: Codable {
+//    let status: Int
+//    let message: String
+//    let entries: [JobDetail]
+//}
+//
+//// MARK: - Entry
+//struct JobDetail: Codable {
+//    let uniqueID: Int
+//    let jobTitle, serialNO, problem, appearance: String
+//    let contactRemark: String
+//    let jobStatusID: Int
+//    let timeline: Timeline
+//    let customer: Customer
+//    let warranty: Warranty
+//    let engineer: [Engineer]
+//    let jobProblem, jobSolution: Job
+//    let jobTechnicalSupport: JobTechnicalSupport
+//    let rejectedBy: String
+//    let rejectedDate: Int
+//    let rejectedReason: String
+//    let partOfUse: [PartOfUse]
+//    let attachment: [Attachment]
 //    let recommendation: JSONNull?
-    let dispatcherRecommend: String
-    let updateDate: Int
-}
+//    let dispatcherRecommend: String
+//    let updateDate: Int
+//        let uniqueID: Int
+//      let jobTitle, serialNO, problem, appearance: String
+//      let contactRemark: String
+//      let jobStatusID: Int
+//      let timeline: Timeline
+//      let customer: Customer
+//      let warranty: Warranty
+//      let engineer: [Engineer]
+//      let jobProblem, jobSolution: Job
+//      let jobTechnicalSupport: JobTechnicalSupport
+//      let rejectedBy: String
+//      let rejectedDate: Int
+//      let rejectedReason: String
+//      let partOfUse: [PartOfUse]
+//      let attachment: [Attachment]
+////      let recommendation: JSONNull?
+//      let dispatcherRecommend: String
+//      let updateDate: Int
+//      let problemImage: [ProblemImage]?
+//}
 
 // MARK: - Attachment
 struct Attachment: Codable {
@@ -120,3 +139,31 @@ struct Buffer: Codable {
 }
 
 
+struct JobMedel
+: Codable {
+    let status: Int
+    let message: String
+    let entries: [JobDetail]
+}
+
+// MARK: - Entry
+struct JobDetail: Codable {
+    let uniqueID: Int?
+    let jobTitle, serialNO, problem:String
+    let appearance: String?
+       let contactRemark: String?
+       let jobStatusID: Int?
+       let timeline: Timeline?
+       let customer: Customer
+       let warranty: Warranty?
+       let engineer: [Engineer]?
+       let jobProblem, jobSolution: Job?
+       let jobTechnicalSupport: JobTechnicalSupport?
+       let rejectedBy: String?
+       let rejectedDate: Int?
+       let rejectedReason: String?
+       let partOfUse: [PartOfUse]?
+       let attachment: [Attachment]?
+       let dispatcherRecommend: String?
+       let updateDate: Int?
+}
