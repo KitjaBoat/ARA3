@@ -8,9 +8,12 @@
 import UIKit
 
 
-class NewJobViewController: UIViewController {
+class NewJobViewController: BaseViewController {
     let viewModel = NewJobViewModel()
     var jobList:[JobDetail]?
+    
+   
+   
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,12 +29,29 @@ class NewJobViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+        
+        setupNavigationBar()
+        
+        //delegate side menu go home
+        drawerController.delegate = self
+    }
+    
+    func setupNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(rgb: 0xf75355)
+        appearance.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20.0),
+                                          .foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     @IBAction func sideMenu(_ sender: Any) {
        // present menu view
         let drawerController = DrawSideMenuViewController()
-            present(drawerController, animated: true)
+        drawerController.delegate = self
+        present(drawerController, animated: true)
     }
     
     @IBAction func backToHome(_ sender: Any) {
@@ -73,4 +93,5 @@ extension NewJobViewController:UITableViewDataSource,UITableViewDelegate {
 //        navigationController?.pushViewController(vc, animated: true)
     }
 }
-
+//
+//

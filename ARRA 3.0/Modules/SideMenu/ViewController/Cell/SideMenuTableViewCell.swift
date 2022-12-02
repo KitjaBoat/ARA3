@@ -7,12 +7,15 @@
 
 import UIKit
 
+
+
 class SideMenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var positionLabel: UILabel!
-    
     @IBOutlet weak var home: UIButton!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +28,9 @@ class SideMenuTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func goToHome(_ sender: Any) {
+        print("Home")
+       
+        NotificationCenter.default.post(name: Notification.Name("goHome"), object: nil)
     }
     
 }

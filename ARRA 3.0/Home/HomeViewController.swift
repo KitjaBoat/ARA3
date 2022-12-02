@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     var allowModule:[String]?
     var jobList:[JobDetail]?
    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,12 @@ class HomeViewController: UIViewController {
         loadData(modeule: Module.Newjob.rawValue)
         
         DataFortableView.allowmoduleFortableView = LoginResponse.current?.allowModule
+        
+        //delegate logout from alert
+       
+        
+        set()
+        
         
     }
     
@@ -126,10 +133,19 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToNewJob", sender: self)
-//        performSegue(withIdentifier: "GoToCheckIn", sender: self)
+        switch allowModule?[indexPath.row] {
+        case Module.Newjob.rawValue:
+            performSegue(withIdentifier: "goToNewJob", sender: self)
+        case Module.Joblist.rawValue:
+            performSegue(withIdentifier: "goToJobList", sender: self)
+        case Module.RejectHistrory.rawValue:
+            performSegue(withIdentifier: "goToRejectHistory", sender: self)
+        case Module.Setting.rawValue:
+            performSegue(withIdentifier: "goToSetting", sender: self)
+        default:
+            break
+        }
     }
-    
 }
 
 extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
@@ -199,8 +215,22 @@ extension HomeViewController:PopoverToHomeDelegate {
         print(selectedCell)
         loadData(modeule: selectedCell)
     }
-        
-        
+}
+
+extension HomeViewController{
+
+    func set() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
+    }
+    
+    
+    @objc func methodOfReceivedNotification(notification: Notification) {
+        self.dismiss(animated: true, completion: nil)
+
+        let preferences = UserDefaults.standard
+        preferences.removeObject(forKey: "KEY_USERNAME")
+       
+    }
 }
 
 enum Module:String {

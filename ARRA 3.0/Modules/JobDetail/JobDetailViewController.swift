@@ -217,20 +217,9 @@ extension JobDetailViewController:UITableViewDelegate,UITableViewDataSource {
            
             }))
                    self.present(alert, animated: true, completion: nil)
-            
-            
         }
-        
-       
-           
-        
-        
-  
         print(indexPath)
     }
-    
-   
-   
     
 //    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //        let view = UIView()
@@ -264,6 +253,14 @@ extension JobDetailViewController {
            mapItem.openInMaps(launchOptions: options)
        }
 }
+
+//extension JobDetailViewController:MenuControllerDeleger {
+//    func cellDidTap(module: String) {
+//        
+//    }
+//    
+//    
+//}
 
 
 

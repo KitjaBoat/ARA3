@@ -9,26 +9,31 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class CheckInViewController: UIViewController,CLLocationManagerDelegate{
+class CheckInViewController: BaseViewController,CLLocationManagerDelegate{
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var map: MKMapView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//
+//
+//    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(rgb: 0xf75355)
+        appearance.backgroundColor = .blue
         appearance.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20.0),
                                           .foregroundColor: UIColor.white]
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         //        locationManager.requestAlwaysAuthorization()
+        title = "CheckIn"
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        
     }
     
     
