@@ -55,7 +55,7 @@ class LoginViewModel {
                                   target: "Login",
                                   data: reqLogin)
         
-        print(reqBody.data.password)
+//        print(reqBody.data?.password)
 
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(reqBody)

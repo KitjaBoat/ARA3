@@ -58,6 +58,7 @@
 		1B6927F5293092D10085D29F /* NewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6927F4293092D10085D29F /* NewJobViewController.swift */; };
 		1B6927FB293099B80085D29F /* NewJobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6927F9293099B80085D29F /* NewJobTableViewCell.swift */; };
 		1B6927FC293099B80085D29F /* NewJobTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6927FA293099B80085D29F /* NewJobTableViewCell.xib */; };
+		1B8715032939A06200336DF3 /* MasterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8715022939A06200336DF3 /* MasterData.swift */; };
 		1B876BC129384218000380D1 /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B876BC029384218000380D1 /* CentralViewController.swift */; };
 		1B876BCC29385334000380D1 /* DrawerTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B876BCB29385334000380D1 /* DrawerTransitionManager.swift */; };
 		1B876BCE29385532000380D1 /* DrawerPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B876BCD29385532000380D1 /* DrawerPresentationController.swift */; };
@@ -126,6 +127,7 @@
 		1B6927F4293092D10085D29F /* NewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobViewController.swift; sourceTree = "<group>"; };
 		1B6927F9293099B80085D29F /* NewJobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobTableViewCell.swift; sourceTree = "<group>"; };
 		1B6927FA293099B80085D29F /* NewJobTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewJobTableViewCell.xib; sourceTree = "<group>"; };
+		1B8715022939A06200336DF3 /* MasterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterData.swift; sourceTree = "<group>"; };
 		1B876BC029384218000380D1 /* CentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
 		1B876BCB29385334000380D1 /* DrawerTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerTransitionManager.swift; sourceTree = "<group>"; };
 		1B876BCD29385532000380D1 /* DrawerPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPresentationController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				1B114C6729387EB600CBDE5F /* BaseViewController.swift */,
+				1B6927FD293099C00085D29F /* Cell */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				1B6927D22930560E0085D29F /* LoginResponse.swift */,
+				1B8715022939A06200336DF3 /* MasterData.swift */,
 				1B3804D32935B03F000ED4C6 /* Webservice.swift */,
 				1B3804D52935B059000ED4C6 /* Environment.swift */,
 				1B3804D72935B07D000ED4C6 /* AllowSystem.swift */,
@@ -294,7 +298,6 @@
 			children = (
 				1B6927DB29306EE00085D29F /* HomeViewController.swift */,
 				1B6927DE29306EFF0085D29F /* HomeViewModel.swift */,
-				1BBCB45E2936F0DC0073A2EF /* PopoverViewController.swift */,
 				1B6927E829307F210085D29F /* Cell */,
 			);
 			path = Home;
@@ -305,8 +308,6 @@
 			children = (
 				1B6927E429307F190085D29F /* ModuleCellCollectionViewCell.swift */,
 				1B6927E529307F190085D29F /* ModuleCellCollectionViewCell.xib */,
-				1BBCB4602936F9940073A2EF /* PopoverTableViewCell.swift */,
-				1BBCB4612936F9940073A2EF /* PopoverTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -314,6 +315,7 @@
 		1B6927E9293082420085D29F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				1B8715042939DE9C00336DF3 /* Popover */,
 				1B114C692938846A00CBDE5F /* Base */,
 				1B6927EA2930824A0085D29F /* NewJob */,
 				1B114C6A293884FD00CBDE5F /* JobList */,
@@ -332,7 +334,6 @@
 				1B6927F0293082D70085D29F /* NewJobViewModel.swift */,
 				1B6927F2293082E30085D29F /* JobModel.swift */,
 				1B6927F4293092D10085D29F /* NewJobViewController.swift */,
-				1B6927FD293099C00085D29F /* Cell */,
 			);
 			path = NewJob;
 			sourceTree = "<group>";
@@ -364,6 +365,24 @@
 			children = (
 				1B6927F9293099B80085D29F /* NewJobTableViewCell.swift */,
 				1B6927FA293099B80085D29F /* NewJobTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1B8715042939DE9C00336DF3 /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				1BBCB45E2936F0DC0073A2EF /* PopoverViewController.swift */,
+				1B8715052939DEB200336DF3 /* Cell */,
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
+		1B8715052939DEB200336DF3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1BBCB4602936F9940073A2EF /* PopoverTableViewCell.swift */,
+				1BBCB4612936F9940073A2EF /* PopoverTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -583,6 +602,7 @@
 				1BBCB45F2936F0DC0073A2EF /* PopoverViewController.swift in Sources */,
 				1B6927DC29306EE00085D29F /* HomeViewController.swift in Sources */,
 				1B3804C92935AB4C000ED4C6 /* KeychainManager.swift in Sources */,
+				1B8715032939A06200336DF3 /* MasterData.swift in Sources */,
 				1B876BD0293856F8000380D1 /* DrawerSlideAnimation.swift in Sources */,
 				1B6927F5293092D10085D29F /* NewJobViewController.swift in Sources */,
 				1B6927E629307F190085D29F /* ModuleCellCollectionViewCell.swift in Sources */,
@@ -766,6 +786,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -795,6 +816,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

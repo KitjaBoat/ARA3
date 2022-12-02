@@ -83,3 +83,11 @@ extension UIButton {
         self.imageView?.contentMode = .scaleAspectFit
     }
 }
+
+extension UIBarButtonItem {
+
+    var frame:CGRect?{
+        return (value(forKey: "view") as? UIView)?.frame
+    }
+
+}

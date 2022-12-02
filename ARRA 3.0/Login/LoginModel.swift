@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RequestLogin:Codable  {
+class RequestLogin:BaseModel  {
     var username: String?
     var password: String?
 //    var deviceInfo: DeviceInfo?
@@ -16,34 +16,57 @@ class RequestLogin:Codable  {
     init(username:String,password:String?) {
         self.username = username
         self.password = password
+        super.init()
 //        self.deviceInfo = deviceInfo.setupDevice()
     }  
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
 }
 
 class RequestBody:Codable {
     var module: String
     var target: String
-    var data: RequestLogin
-//    var token: String?
+    var data: BaseModel?
+    var token: String?
+    
 //    
     init(
         module: String,
         target: String,
-        data: RequestLogin?
+        data: BaseModel?
 //        noToken: Bool = false
 //        token: String? = nil
     ) {
-        
         self.module = module
         self.target = target
         self.data = data ?? RequestLogin(username: "", password: "")
 //        self.token = token ?? LoginResponse.current?.token
     }
+    
+     init(
+        module: String,
+        target: String,
+        
+//        noToken: Bool = false
+        token: String?
+    ) {
+        self.module = module
+        self.target = target
+        
+        self.token = token ?? LoginResponse.current?.token
+    }
+    
+    init(
+       module: String,
+       target: String
+
+   ) {
+       self.module = module
+       self.target = target
+   }
 }
-
-
-
-
 
 
 class DeviceInfo {
@@ -60,4 +83,12 @@ class DeviceInfo {
         macAddress = device.identifierForVendor?.description
         return self
     }
+}
+
+class BaseModel:Codable {
+    
+}
+
+class RequestJobDetail: BaseModel {
+    var jobID: Int = 0
 }

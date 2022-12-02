@@ -30,6 +30,11 @@ class HomeViewController: UIViewController {
         checkPassword()
         checkResponseCache()
         
+        DataFortableView.allowmoduleFortableView = LoginResponse.current?.allowModule
+        
+        //loadMjob
+        homeViewModel.loadMasterData()
+        
         //set button leftside
         switchTableButton.leftImage(image: UIImage(named: "ic_menu_new_job_active")!, renderMode: .alwaysOriginal)
         
@@ -43,10 +48,10 @@ class HomeViewController: UIViewController {
         allowModule = LoginResponse.current?.allowModule
         allowModule?.append(Module.Setting.rawValue)
         
-        loadData(modeule: Module.Newjob.rawValue)
+        loadData(modeule: Module.NewJob.rawValue)
         
-        DataFortableView.allowmoduleFortableView = LoginResponse.current?.allowModule
         
+  
         //delegate logout from alert
        
         
@@ -93,6 +98,8 @@ class HomeViewController: UIViewController {
             popoverPresentationController.sourceRect = buttonFrame
             popoverPresentationController.delegate = self
             if let popoverController = popoverContentController {
+                
+                popoverController.dataSource =  DataFortableView.allowmoduleFortableView
                 present(popoverController, animated: true, completion: nil)
             }
         }
@@ -113,9 +120,9 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
         var icon:UIImage?
         if let title = allowModule?[indexPath.row] {
             switch title {
-            case Module.Newjob.rawValue:
+            case Module.NewJob.rawValue:
                 icon = UIImage(named: "ic_assignment")
-            case Module.Joblist.rawValue:
+            case Module.JobList.rawValue:
                 icon = UIImage(named: "ic_job_list")
             case Module.RejectHistrory.rawValue:
                 icon = UIImage(named: "ic_assignment")
@@ -134,9 +141,9 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch allowModule?[indexPath.row] {
-        case Module.Newjob.rawValue:
+        case Module.NewJob.rawValue:
             performSegue(withIdentifier: "goToNewJob", sender: self)
-        case Module.Joblist.rawValue:
+        case Module.JobList.rawValue:
             performSegue(withIdentifier: "goToJobList", sender: self)
         case Module.RejectHistrory.rawValue:
             performSegue(withIdentifier: "goToRejectHistory", sender: self)
@@ -158,6 +165,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         
         
         if let job = jobList?[indexPath.row] {
+            cell.titleIcon.image = job.getJobStatus()?.getIcon()
             cell.titleFirstLabel.text = job.jobTitle
             cell.titleSecondLabel.text = job.problem
             cell.subTitleFristIcon.image = UIImage(named: "ic_work_location")
@@ -181,10 +189,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         let vc = storyboard?.instantiateViewController(withIdentifier: "JobDetailViewController") as! JobDetailViewController
         vc.job = jobList?[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
-        
     }
-    
-    
 }
 
 extension HomeViewController: UIPopoverPresentationControllerDelegate {
@@ -223,7 +228,6 @@ extension HomeViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
     }
     
-    
     @objc func methodOfReceivedNotification(notification: Notification) {
         self.dismiss(animated: true, completion: nil)
 
@@ -234,9 +238,10 @@ extension HomeViewController{
 }
 
 enum Module:String {
-    case Newjob = "NewJob"
-    case Joblist = "JobList"
+    case NewJob = "NewJob"
+    case JobList = "JobList"
     case RejectHistrory = "RejectHistory"
     case Setting = "Setting"
+    case JobDetail = "JobDetail"
 }
 

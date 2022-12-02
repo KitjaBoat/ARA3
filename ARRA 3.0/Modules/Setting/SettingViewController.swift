@@ -11,7 +11,7 @@ protocol SettingDelegate {
     func settingLogout()
 }
 
-class SettingViewController: BaseViewController {
+class SettingViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logoutButton: UIButton!
@@ -19,6 +19,7 @@ class SettingViewController: BaseViewController {
     var settingViewModel = SettingViewModel()
     var settingDatasource:[User?]?
     var delegate:SettingDelegate?
+    let drawerController = DrawSideMenuViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,43 @@ class SettingViewController: BaseViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         title = Module.Setting.rawValue
+        
+        //item
+        let menuButton = UIButton(type: UIButton.ButtonType.system)
+        menuButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        menuButton.addTarget(self, action: #selector(openSideMnu), for:    .touchUpInside)
+        menuButton.setImage(UIImage(named: "ic_menu"), for: UIControl.State())
+        let menuBarButtonItem = UIBarButtonItem(customView: menuButton)
+
+        let menuButtonRight = UIButton(type: UIButton.ButtonType.system)
+        menuButtonRight.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        menuButtonRight.addTarget(self, action: #selector(disMiss), for:    .touchUpInside)
+        menuButtonRight.setImage(UIImage(named: "ic_home"), for: UIControl.State())
+        let menuBarButtonItemRight = UIBarButtonItem(customView: menuButtonRight)
+
+        navigationItem.leftBarButtonItems = [menuBarButtonItem]
+        navigationItem.rightBarButtonItem = menuBarButtonItemRight
+    }
+    
+    @objc func openSideMnu() {
+        drawerController.delegate = self
+        switch title {
+        case Module.NewJob.rawValue:
+            drawerController.selectedModule = Module.NewJob
+        case Module.JobList.rawValue:
+            drawerController.selectedModule = Module.JobList
+        case Module.RejectHistrory.rawValue:
+            drawerController.selectedModule = Module.RejectHistrory
+        case Module.Setting.rawValue:
+            drawerController.selectedModule = Module.Setting
+        default:
+            break
+        }
+        present(drawerController, animated: true)
+    }
+    
+    @objc func disMiss() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func logOut(_ sender: Any) {
@@ -79,5 +117,30 @@ extension SettingViewController :UITableViewDataSource {
         cell.user = model[indexPath.row]
         cell.setup()
         return cell
+    }
+}
+
+extension SettingViewController:MenuControllerDeleger {
+    func cellDidTap(module: String) {
+        switch module {
+        case Module.NewJob.rawValue:
+            let checkInVc = storyboard?.instantiateViewController(withIdentifier: "NewJobViewController") as! NewJobViewController
+            navigationController?.pushViewController(checkInVc, animated: false)
+            self.dismiss(animated: true, completion: nil)
+        case Module.JobList.rawValue:
+            let checkInVc = storyboard?.instantiateViewController(withIdentifier: "JobListViewController") as! JobListViewController
+            navigationController?.pushViewController(checkInVc, animated: false)
+            self.dismiss(animated: true, completion: nil)
+        case Module.RejectHistrory.rawValue:
+            let checkInVc = storyboard?.instantiateViewController(withIdentifier: "RejecHistoryViewController") as! RejecHistoryViewController
+            navigationController?.pushViewController(checkInVc, animated: false)
+            self.dismiss(animated: true, completion: nil)
+        case Module.Setting.rawValue:
+            let checkInVc = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
+            navigationController?.pushViewController(checkInVc, animated: false)
+            self.dismiss(animated: true, completion: nil)
+        default:
+            break
+        }
     }
 }

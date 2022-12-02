@@ -146,24 +146,39 @@ struct JobMedel
     let entries: [JobDetail]
 }
 
+struct JobDetailModel
+: Codable {
+    let status: Int
+    let message: String
+    let entries: JobDetail
+}
+
 // MARK: - Entry
 struct JobDetail: Codable {
     let uniqueID: Int?
     let jobTitle, serialNO, problem:String
     let appearance: String?
-       let contactRemark: String?
-       let jobStatusID: Int?
-       let timeline: Timeline?
-       let customer: Customer
-       let warranty: Warranty?
-       let engineer: [Engineer]?
-       let jobProblem, jobSolution: Job?
-       let jobTechnicalSupport: JobTechnicalSupport?
-       let rejectedBy: String?
-       let rejectedDate: Int?
-       let rejectedReason: String?
-       let partOfUse: [PartOfUse]?
-       let attachment: [Attachment]?
-       let dispatcherRecommend: String?
-       let updateDate: Int?
+    let contactRemark: String?
+    let jobStatusID: Int?
+    let timeline: Timeline?
+    let customer: Customer
+    let warranty: Warranty?
+    let engineer: [Engineer]?
+    let jobProblem, jobSolution: Job?
+    let jobTechnicalSupport: JobTechnicalSupport?
+    let rejectedBy: String?
+    let rejectedDate: Int?
+    let rejectedReason: String?
+    let partOfUse: [PartOfUse]?
+    let attachment: [Attachment]?
+    let dispatcherRecommend: String?
+    let updateDate: Int?
+    
+    func getJobStatus() -> MJobStatus? {
+        let statusList = MasterData.mJobStatus?.filter({ jobStatus in
+            return jobStatus.uniqueID == jobStatusID
+        })
+        return statusList?.first
+    }
 }
+
