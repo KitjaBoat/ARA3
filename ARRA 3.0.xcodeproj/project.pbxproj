@@ -72,6 +72,7 @@
 		1B94BE06293EF5E100AE8020 /* ManageEngineerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B94BE04293EF5E100AE8020 /* ManageEngineerTableViewCell.swift */; };
 		1B94BE07293EF5E100AE8020 /* ManageEngineerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B94BE05293EF5E100AE8020 /* ManageEngineerTableViewCell.xib */; };
 		1B94BE0D293F1ADF00AE8020 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B94BE0C293F1ADF00AE8020 /* BaseViewModel.swift */; };
+		1B94BE77293F3EDC00AE8020 /* ManageEngineerViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B94BE76293F3EDC00AE8020 /* ManageEngineerViewControllerViewModel.swift */; };
 		1B9E1E05292F7AFF009EE387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9E1E04292F7AFF009EE387 /* AppDelegate.swift */; };
 		1B9E1E07292F7AFF009EE387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9E1E06292F7AFF009EE387 /* SceneDelegate.swift */; };
 		1B9E1E0C292F7AFF009EE387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B9E1E0A292F7AFF009EE387 /* Main.storyboard */; };
@@ -150,6 +151,7 @@
 		1B94BE04293EF5E100AE8020 /* ManageEngineerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageEngineerTableViewCell.swift; sourceTree = "<group>"; };
 		1B94BE05293EF5E100AE8020 /* ManageEngineerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageEngineerTableViewCell.xib; sourceTree = "<group>"; };
 		1B94BE0C293F1ADF00AE8020 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		1B94BE76293F3EDC00AE8020 /* ManageEngineerViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageEngineerViewControllerViewModel.swift; sourceTree = "<group>"; };
 		1B9E1E01292F7AFF009EE387 /* ARRA 3.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARRA 3.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B9E1E04292F7AFF009EE387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B9E1E06292F7AFF009EE387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				1B94BE02293EF55100AE8020 /* ManageEngineerViewController.swift */,
+				1B94BE76293F3EDC00AE8020 /* ManageEngineerViewControllerViewModel.swift */,
 				1B94BE08293EF5E900AE8020 /* Cell */,
 			);
 			path = ManageEngineer;
@@ -697,6 +700,7 @@
 				1B94BE0D293F1ADF00AE8020 /* BaseViewModel.swift in Sources */,
 				1B23B16C29385F2900EE2A54 /* DrawSideMenuViewController.swift in Sources */,
 				1B3A657229309BB20054BBF1 /* Font.swift in Sources */,
+				1B94BE77293F3EDC00AE8020 /* ManageEngineerViewControllerViewModel.swift in Sources */,
 				1B3804DA2935C22D000ED4C6 /* AlertManager.swift in Sources */,
 				1B6927FB293099B80085D29F /* NewJobTableViewCell.swift in Sources */,
 				1B3804CC2935AEF5000ED4C6 /* User.swift in Sources */,
@@ -862,15 +866,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 69CR477L7G;
+				DEVELOPMENT_TEAM = 5V57THBPF6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARRA 3.0/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Description;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Description;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Description;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -895,18 +902,21 @@
 				DEVELOPMENT_TEAM = 69CR477L7G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARRA 3.0/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Description;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = Description;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Description;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "co.kitja.ARRA-3-0";
+				PRODUCT_BUNDLE_IDENTIFIER = co.kitja.ARRA3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

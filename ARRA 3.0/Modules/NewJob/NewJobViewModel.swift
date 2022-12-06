@@ -15,7 +15,7 @@ class NewJobViewModel {
     var jobList: [JobMedel]?
     
     func loadJob(completion:@escaping([JobDetail])->Void) {
-        let url = URL(string: "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json")
+        let url = URL(string: jobUrl)
         
         let rejectUrl = URL(string: "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/13_RejectHistory/Data/JobRejectList/data.json")
         
@@ -30,6 +30,7 @@ class NewJobViewModel {
         let jsonData = try? JSONEncoder().encode(reqBody)
         
         var request = URLRequest(url: url)
+        
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
@@ -38,6 +39,8 @@ class NewJobViewModel {
         
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+           
 
             if let httpResponse = response as? HTTPURLResponse {
                 print(httpResponse.statusCode)
@@ -69,6 +72,7 @@ class NewJobViewModel {
       ]
       
       let url = URL(string: "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json")!
+ 
       AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
         .validate()
         .responseJSON { response in

@@ -21,7 +21,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         setupNavigationBarItem()
         setupTableView()
         setObserver()
@@ -33,13 +33,13 @@ class BaseViewController: UIViewController {
         menuButton.addTarget(self, action: #selector(openSideMnu), for:    .touchUpInside)
         menuButton.setImage(UIImage(named: "ic_menu"), for: UIControl.State())
         let menuBarButtonItem = UIBarButtonItem(customView: menuButton)
-
+        
         let menuButtonRight = UIButton(type: UIButton.ButtonType.system)
         menuButtonRight.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         menuButtonRight.addTarget(self, action: #selector(disMiss), for:    .touchUpInside)
         menuButtonRight.setImage(UIImage(named: "ic_home"), for: UIControl.State())
         let menuBarButtonItemRight = UIBarButtonItem(customView: menuButtonRight)
-
+        
         navigationItem.leftBarButtonItems = [menuBarButtonItem]
         navigationItem.rightBarButtonItem = menuBarButtonItemRight
     }
@@ -51,7 +51,7 @@ class BaseViewController: UIViewController {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         //ignore safe area
-//        tableView.contentInsetAdjustmentBehavior = .never
+        //        tableView.contentInsetAdjustmentBehavior = .never
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -122,10 +122,9 @@ extension BaseViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         jobList?.count ?? 1
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewJobTableViewCell", for: indexPath) as! NewJobTableViewCell
-        
         
         if let job = jobList?[indexPath.row] {
             cell.titleIcon.image = job.getJobStatus()?.getIcon()
@@ -136,24 +135,25 @@ extension BaseViewController:UITableViewDataSource,UITableViewDelegate {
             cell.subTitleSecondLeftIcon.image = UIImage(named: "ic_work_receive")
             cell.subTitleSecondLeftLabel.text = "\(job.timeline?.assignment)"
             cell.subTitleSecondRightIcon.image = UIImage(named: "ic_work_expect")
-            cell.subTitleSecondRightLabel.text = "\(job.timeline?.condition.slaResponse)"
+            cell.subTitleSecondRightLabel.text = "\(job.timeline?.condition?.slaResponse)"
             cell.subTitleThirdIcon.image = UIImage(named: "ic_work_appoint")
             //            cell.subTitleThirdLabel.text =  job.timeline.appointment
         }
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "JobDetailViewController") as! JobDetailViewController
         vc.job = jobList?[indexPath.row]
-//        if let id = (jobList?[indexPath.row].uniqueID){
-//        viewModel.loadJobDetailData(jobDetailId: id?) { jobdetail in
+//        if let id = jobList?[indexPath.row].uniqueID{
+//            viewModel.loadJobDetailData(jobDetailId: id
+//            ) { jobdetail in
 //                vc.job = jobdetail
 //                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(vc, animated: true)
+//                    self.navigationController?.pushViewController(vc, animated: true)
 //                }
 //            }
-//    
-//    }
-}
+//        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

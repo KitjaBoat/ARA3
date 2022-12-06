@@ -43,9 +43,7 @@ class AttachFileTableViewCell: UITableViewCell {
         if let attachFileUrl = attachFile?.url {
             guard let url = URL(string: attachFileUrl.replacingOccurrences(of: " ", with: "%20")) else { return }
             UIApplication.shared.open(url)
-        }
-
-       
+        } 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

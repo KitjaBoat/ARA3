@@ -20,7 +20,7 @@ class ManageEngineerTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupCell()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,16 +29,47 @@ class ManageEngineerTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func switchToggle(_ sender: Any) {
+        if switchEnable.isOn {
+            icon.image = UIImage(named: "ic_eng_accept")
+        }else if !switchEnable.isOn {
+            icon.image = UIImage(named: "ic_eng_noaccept")
+        }
+    }
+    
+    func checkLead(){
+        if engineer?.isLead != nil {
+            switchEnable.isHidden = true
+        }
+    }
+    
+    func checkAccepted(){
+        if engineer?.accepted == true {
+            switchEnable.isOn = true
+            icon.image = UIImage(named: "ic_eng_accept")
+        }else if engineer?.accepted == false {
+            switchEnable.isOn = false
+            icon.image = UIImage(named: "ic_eng_noaccept")
+        }
+    }
+    
+    
+    
     func setupCell() {
         labelTitle.text = engineer?.name
         labelTitle.textColor = .black
-        switchEnable.isHidden = hiddenSwitch ?? false
+//        switchEnable.isHidden = hiddenSwitch ?? false
+//        icon.image = UIImage(named: "ic_eng_noaccept")
         
         if enableSwitch == false {
             switchEnable.isEnabled = false
-        }else {
+            icon.image = UIImage(named: "ic_eng_noaccept")
+        }else if enableSwitch == true {
             switchEnable.isEnabled = true
+            icon.image = UIImage(named: "ic_eng_accept")
         }
+        
+       
         
     }
     

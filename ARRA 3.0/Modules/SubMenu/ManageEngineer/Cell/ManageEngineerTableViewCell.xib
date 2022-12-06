@@ -30,6 +30,9 @@
                     </imageView>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qGz-Ze-UvD">
                         <rect key="frame" x="251" y="10" width="51" height="32"/>
+                        <connections>
+                            <action selector="switchToggle:" destination="X7m-yj-uPY" eventType="valueChanged" id="Onb-6I-ClY"/>
+                        </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-sP-7K3">
                         <rect key="frame" x="55" y="16" width="186" height="21"/>

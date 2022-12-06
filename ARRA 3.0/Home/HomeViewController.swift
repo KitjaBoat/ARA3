@@ -189,7 +189,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
                 cell.subTitleSecondLeftIcon.image = UIImage(named: "ic_work_receive")
                 cell.subTitleSecondLeftLabel.text = "\(timeline.assignment)"
                 cell.subTitleSecondRightIcon.image = UIImage(named: "ic_work_expect")
-                cell.subTitleSecondRightLabel.text = "\(timeline.condition.slaResponse)"
+                cell.subTitleSecondRightLabel.text = "\(timeline.condition?.slaResponse)"
             }
            
 

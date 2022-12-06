@@ -21,8 +21,8 @@ class NewJobViewController: BaseViewController {
         }
         setupNavigationBar()
         
-        detailViewModel.postRequest()
        
+        detailViewModel.postRequest()
     }
     
     func setupNavigationBar() {

@@ -37,7 +37,7 @@ class JobDetailViewController: UIViewController {
             JobToSetupTableView(title: job.getJobStatus()?.detail ?? "", icon: job.getJobStatus()?.getIcon()),
             JobToSetupTableView(title: "\(job.timeline?.opened)", icon: UIImage(named: "ic_work_open")),
 //            JobToSetupTableView(title: "\(job.timeline!.assignment)", icon: UIImage(named: "ic_work_receive")),
-            JobToSetupTableView(title: "\(job.timeline?.condition.slaResponse)", icon: UIImage(named: "ic_work_expect")),
+            JobToSetupTableView(title: "\(job.timeline?.condition?.slaResponse)", icon: UIImage(named: "ic_work_expect")),
 //            JobToSetupTableView(title: "\(job.timeline!.condition.slaFixed)", icon: UIImage(named: "ic_work_sla_fixed")),
             JobToSetupTableView(title: job.problem , icon: UIImage(named: "ic_work_problem")),
             JobToSetupTableView(title: job.dispatcherRecommend ?? "", icon: UIImage(named: "ic_chat")),
@@ -113,7 +113,7 @@ extension JobDetailViewController:UITableViewDelegate,UITableViewDataSource {
                 case UIImage(named: "ic_work_open"):
                     cell.headLabel.text = "Open Date"
                     cell.rightHeadLabel.text = "Assign Date"
-                    cell.rightmainLabel.text =  "\(job.timeline?.assignment)"
+                    cell.rightmainLabel.text =  "\(job.timeline?.assignment ?? 0)"
                     cell.rightIconMain.image = UIImage(named: "ic_work_receive")
                     cell.headLabel.isHidden = false
                     cell.rightmainLabel.isHidden = false
@@ -125,7 +125,7 @@ extension JobDetailViewController:UITableViewDelegate,UITableViewDataSource {
                 case UIImage(named: "ic_work_expect"):
                     cell.headLabel.text = "SLA Respone"
                     cell.rightHeadLabel.text = "SLA Fixd"
-                    cell.rightmainLabel.text =  "\(job.timeline?.condition.slaFixed)"
+                    cell.rightmainLabel.text =  "\(job.timeline?.condition?.slaFixed ?? 0)"
                     cell.rightIconMain.image = UIImage(named: "ic_work_sla_fixed")
                     cell.headLabel.isHidden = false
                     cell.rightmainLabel.isHidden = false
@@ -140,17 +140,17 @@ extension JobDetailViewController:UITableViewDelegate,UITableViewDataSource {
                 if model.title == Title.ATTACHMENT.rawValue {
                     cell.rightIconmainLabel.isHidden = false
                     cell.rightIconmainLabel
-                        .text = "\(job.attachment?.count) file"
+                    .text = "\(job.attachment?.count ?? 0) file"
                     cell.click.isHidden = false
                 }
                 if model.title == Title.WARRANTY_Owner.rawValue{
                     cell.headLabel.text = "Owner"
-                    cell.mainLabel.text = "\(job.warranty?.expire)"
+                    cell.mainLabel.text = "\(job.warranty?.expire ?? 0)"
                     cell.headLabel.isHidden = false
                 }
                 if model.title == Title.WARRANTY_Supplier.rawValue{
                     cell.headLabel.text = "Supplier"
-                    cell.mainLabel.text = "\(job.warranty?.expireSupplier)"
+                    cell.mainLabel.text = "\(job.warranty?.expireSupplier ?? 0)"
                     cell.headLabel.isHidden = false
                 }
                 if model.title == Title.GENERAL_Sn.rawValue{
@@ -188,9 +188,18 @@ extension JobDetailViewController:UITableViewDelegate,UITableViewDataSource {
                     let engCanAccept = job.engineer?.filter { acp in
                         return acp.accepted == true
                     }
-                    cell.rightIconmainLabel.text = "\(engCanAccept?.count)/\(job.engineer?.count)"
+                    
+                    cell.rightIconmainLabel.text = "\(engCanAccept?.count ?? 0)/\(job.engineer?.count ?? 0)"
                     cell.rightIconmainLabel.isHidden = false
                     cell.click.isHidden = false
+                }
+                
+                if model.title == Title.ENGINEER_Accept_Button.rawValue {
+                    cell.rightmainLabel.text = "Tab"
+                    cell.rightmainLabel.isHidden = false
+                    cell.backgroundColor = UIColor(rgb: 0xf75355)
+                    cell.rightmainLabel.textColor = .white
+                    
                 }
             }
             

@@ -92,6 +92,9 @@ struct Engineer: Codable {
 struct Job: Codable {
     let uniqueID, subID: Int
     let remark: String
+    
+    
+
 }
 
 // MARK: - JobTechnicalSupport
@@ -108,10 +111,15 @@ struct PartOfUse: Codable {
 
 // MARK: - Timeline
 struct Timeline: Codable {
-    let opened: Int
-    let condition: Condition
-    let assignment: Int
-    var appointment: Date?
+     var opened: Date?
+     var condition: Condition?
+     var assignment: Int?
+     var accepted: Date?
+     var appointment: Date?
+     var startTravel: JobStamp?
+//     var checkIn: JobStamp?
+//     var repair: Repair?
+//     var checkOut: JobS
 }
 
 // MARK: - Condition
@@ -172,7 +180,7 @@ struct JobDetail: Codable {
     let partOfUse: [PartOfUse]?
     let attachment: [Attachment]?
     let dispatcherRecommend: String?
-    let updateDate: Int?
+    var updateDate: Int?
     
     func getJobStatus() -> MJobStatus? {
         let statusList = MasterData.mJobStatus?.filter({ jobStatus in
@@ -180,5 +188,33 @@ struct JobDetail: Codable {
         })
         return statusList?.first
     }
+  
 }
 
+class JobStamp : BaseModel {
+    var coordinates: Coordinates?
+    var distance: Float = 0 // Meter
+    var datetime: Date?
+    var jobProgressList: [JobProgress]?
+   var repairList: [MRepair]?
+}
+
+class JobProgress : BaseModel {
+    var jobProgressID: CLong = 0
+   var detail: String?
+     var datetime: Date?
+    
+//    func getJobProgress() -> MJobProgress? {
+//        
+//        let module = ModuleManager.getModule(key: NewJobModule.key) as? NewJobModule
+//        let jobProgressList = module?.getMasterDataList( MJobProgress.self )?.filter({ ( jobProgress ) -> Bool in
+//            return jobProgress.uniqueID == jobProgressID
+//        })
+//        
+//        return jobProgressList?.first
+//    }
+}
+
+class MRepair : BaseModel {
+   var title: String?
+}
