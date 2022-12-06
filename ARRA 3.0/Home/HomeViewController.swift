@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     let homeViewModel = HomeViewModel()
     var allowModule:[String]?
     var jobList:[JobDetail]?
+    var allButtonDatasource:String?
    
    
     
@@ -105,9 +106,22 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteArray(_ sender: Any) {
-        
+    @IBAction func allButtonPress(_ sender: Any) {
+        switch allButtonDatasource {
+        case Module.NewJob.rawValue:
+            performSegue(withIdentifier: "goToNewJob", sender: self)
+        case Module.JobList.rawValue:
+            performSegue(withIdentifier: "goToJobList", sender: self)
+        case Module.RejectHistrory.rawValue:
+            performSegue(withIdentifier: "goToRejectHistory", sender: self)
+        case Module.Setting.rawValue:
+            performSegue(withIdentifier: "goToSetting", sender: self)
+        default:
+            break
+        }
     }
+    
+    
 }
 
 extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource {
@@ -188,8 +202,11 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "JobDetailViewController") as! JobDetailViewController
         vc.job = jobList?[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .pageSheet
+        present(vc, animated: true, completion: nil)
     }
+    
+    
 }
 
 extension HomeViewController: UIPopoverPresentationControllerDelegate {
@@ -210,11 +227,15 @@ extension HomeViewController: UIPopoverPresentationControllerDelegate {
 extension HomeViewController:PopoverToHomeDelegate {
     func tabOnTableViewCellFromPopover(selectedCell: String) {
         //set image
+        allButtonDatasource = selectedCell
         switchTableButton.setTitle(selectedCell, for: .normal)
         if selectedCell == "JobList" {
             switchTableButton.leftImage(image: UIImage(named: "ic_menu_on_progress_active")!, renderMode: .alwaysOriginal)
+          
+            allButton.tintColor = UIColor(ciColor: CIColor(red: 0.701961, green: 0.533333, blue: 1, alpha: 1))
         }else {
             switchTableButton.leftImage(image: UIImage(named: "ic_menu_new_job_active")!, renderMode: .alwaysOriginal)
+            allButton.tintColor = UIColor(rgb: 0xf75355)
         }
         //set new table
         print(selectedCell)

@@ -14,6 +14,10 @@ class CustomeCell: UITableViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var mainLabel: UILabel!
     
+    @IBOutlet weak var rightIconMain: UIImageView!
+    @IBOutlet weak var rightHeadLabel: UILabel!
+    @IBOutlet weak var rightmainLabel: UILabel!
+    
     @IBOutlet weak var rightIcon: UIImageView!
     @IBOutlet weak var rightIconmainLabel: UILabel!
     

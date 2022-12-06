@@ -9,16 +9,18 @@ import UIKit
 
 
 class NewJobViewController: BaseViewController {
-    let viewModel = NewJobViewModel()
+    let detailViewModel = NewJobViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.loadJob { job in
+        detailViewModel.loadJob { job in
             self.jobList = job
+
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
         setupNavigationBar()
+       
     }
     
     func setupNavigationBar() {

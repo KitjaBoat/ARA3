@@ -9,6 +9,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     let drawerController = DrawSideMenuViewController()
+    let viewModel = BaseViewModel()
     var jobList:[JobDetail]?
     
     let tableView: UITableView = {
@@ -133,9 +134,9 @@ extension BaseViewController:UITableViewDataSource,UITableViewDelegate {
             cell.subTitleFristIcon.image = UIImage(named: "ic_work_location")
             cell.subTitleFristLabel.text = job.customer.location.address
             cell.subTitleSecondLeftIcon.image = UIImage(named: "ic_work_receive")
-            cell.subTitleSecondLeftLabel.text = "\(job.timeline!.assignment)"
+            cell.subTitleSecondLeftLabel.text = "\(job.timeline?.assignment)"
             cell.subTitleSecondRightIcon.image = UIImage(named: "ic_work_expect")
-            cell.subTitleSecondRightLabel.text = "\(job.timeline!.condition.slaResponse)"
+            cell.subTitleSecondRightLabel.text = "\(job.timeline?.condition.slaResponse)"
             cell.subTitleThirdIcon.image = UIImage(named: "ic_work_appoint")
             //            cell.subTitleThirdLabel.text =  job.timeline.appointment
         }
@@ -144,7 +145,14 @@ extension BaseViewController:UITableViewDataSource,UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "JobDetailViewController") as! JobDetailViewController
-        vc.job = jobList?[indexPath.row]
+//        vc.job = jobList?[indexPath.row]
+        let id = (jobList?[indexPath.row].uniqueID)
+        viewModel.loadJobDetailData(jobDetailId: id!) { jobdetail in
+                vc.job = jobdetail
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+    
     }
-
 }

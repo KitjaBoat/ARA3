@@ -35,14 +35,14 @@ class RequestBody:Codable {
     init(
         module: String,
         target: String,
-        data: BaseModel?
-//        noToken: Bool = false
-//        token: String? = nil
+        data: BaseModel?=nil,
+        noToken: Bool = false,
+        token: String? = nil
     ) {
         self.module = module
         self.target = target
-        self.data = data ?? RequestLogin(username: "", password: "")
-//        self.token = token ?? LoginResponse.current?.token
+        self.data = data
+        self.token = token ?? LoginResponse.current?.token
     }
     
      init(

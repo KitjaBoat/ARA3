@@ -163,7 +163,7 @@ struct JobDetail: Codable {
     let timeline: Timeline?
     let customer: Customer
     let warranty: Warranty?
-    let engineer: [Engineer]?
+    var engineer: [Engineer]?
     let jobProblem, jobSolution: Job?
     let jobTechnicalSupport: JobTechnicalSupport?
     let rejectedBy: String?

@@ -10,27 +10,18 @@ import UIKit
 
 
 class JobListViewController: BaseViewController {
-    let viewModel = JobListViewModel()
-    
-    
-    
+    let jobListViewModel = JobListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         
-        viewModel.loadJobData { job in
+        jobListViewModel.loadJobData { job in
             self.jobList = job
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
-        
-        
-        
-        
-        
-        //        setBarItem()
     }
     
     func setupNavigationBar() {
@@ -48,20 +39,12 @@ class JobListViewController: BaseViewController {
         
         let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"),  style: .plain, target: self, action: #selector(openInfo))
         
-        
-        
         navigationItem.rightBarButtonItems = [homeButton,infoButton ]
     }
     
     @objc func openInfo() {
         let popoverContentController = self.storyboard?.instantiateViewController(withIdentifier: "PopoverViewController") as? PopoverViewController
-        
-        //        let button = navigationItem.rightBarButtonItem as? UIButton
-        //
-        //        let buttonFrame = button?.frame ?? CGRect.zero
         popoverContentController?.modalPresentationStyle = .popover
-        
-        
         if let popoverPresentationController = popoverContentController?.popoverPresentationController {
             popoverPresentationController.permittedArrowDirections = .up
             popoverPresentationController.sourceView = self.view
@@ -95,6 +78,8 @@ extension JobListViewController: UIPopoverPresentationControllerDelegate {
         return true
     }
 }
+
+
 
 
 
