@@ -7,5 +7,6 @@ target 'ARRA 3.0' do
 
   # Pods for ARRA 3.0
 pod 'SideMenu'
+pod 'Alamofire'
 
 end

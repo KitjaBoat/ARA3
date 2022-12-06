@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class NewJobViewModel {
 //    let jobUrl = "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json"
@@ -14,37 +15,33 @@ class NewJobViewModel {
     var jobList: [JobMedel]?
     
     func loadJob(completion:@escaping([JobDetail])->Void) {
-        let url = URL(string: "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/13_RejectHistory/Data/JobRejectList/data.json")
+        let url = URL(string: "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json")
+        
+        let rejectUrl = URL(string: "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/13_RejectHistory/Data/JobRejectList/data.json")
         
         guard let url = url else {
             return
         }
         
-        let reqBody:[String: Any] = ["module": "JobList",
-                                     "target": "JobList",
-                                     "token" : "zaPS4{N,n]X5timY#0A})P*oHIsk<Q4IC~Y(f)e,uY#igkP)?ZSP6<<FGGJ<V+/S"]
+        let reqBody = RequestBody(module: "NewJob",
+                                  target: "JobList",
+                                  data: nil)
         
+        let jsonData = try? JSONEncoder().encode(reqBody)
         
-//        "zaPS4{N,n]X5timY#0A})P*oHIsk<Q4IC~Y(f)e,uY#igkP)?ZSP6<<FGGJ<V+/S"
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
         
-        let jsonData = try? JSONSerialization.data(withJSONObject: reqBody)
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-//        let jsonEncoder = JSONEncoder()
-//        let jsonData = try? jsonEncoder.encode(reqBody)
-        var requst = URLRequest(url: url)
-        requst.httpMethod = "POST"
-        requst.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        requst.httpBody = jsonData
-        
-        
-        let task = URLSession.shared.dataTask(with: requst) { data, response, error in
-//            guard let data = data else {
-//                return
-//            }
-            
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
             if let httpResponse = response as? HTTPURLResponse {
                 print(httpResponse.statusCode)
-                print(data)
+               
                 if httpResponse.statusCode == 200 {
                     do {
                         let decode =
@@ -62,6 +59,26 @@ class NewJobViewModel {
         }
         task.resume()
         
+    }
+    
+    func postRequest() {
+      let parameters: [String : Any] = [
+        "module" : "NewJob",
+        "target" : "JobList",
+        "token" : "zaPS4{N,n]X5timY#0A})P*oHIsk<Q4IC~Y(f)e,uY#igkP)?ZSP6<<FGGJ<V+/S"
+      ]
+      
+      let url = URL(string: "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/2_NewJob/Data/Data/data.json")!
+      AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        .validate()
+        .responseJSON { response in
+          switch response.result {
+          case .success(let response):
+            print(response)
+          case .failure(let error):
+            print(error.localizedDescription)
+          }
+      }
     }
     
     

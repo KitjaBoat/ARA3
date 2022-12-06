@@ -20,6 +20,8 @@ class NewJobViewController: BaseViewController {
             }
         }
         setupNavigationBar()
+        
+        detailViewModel.postRequest()
        
     }
     

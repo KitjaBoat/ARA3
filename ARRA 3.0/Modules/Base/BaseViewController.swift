@@ -145,14 +145,15 @@ extension BaseViewController:UITableViewDataSource,UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "JobDetailViewController") as! JobDetailViewController
-//        vc.job = jobList?[indexPath.row]
-        let id = (jobList?[indexPath.row].uniqueID)
-        viewModel.loadJobDetailData(jobDetailId: id!) { jobdetail in
-                vc.job = jobdetail
-                DispatchQueue.main.async {
+        vc.job = jobList?[indexPath.row]
+//        if let id = (jobList?[indexPath.row].uniqueID){
+//        viewModel.loadJobDetailData(jobDetailId: id?) { jobdetail in
+//                vc.job = jobdetail
+//                DispatchQueue.main.async {
                     self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-    
-    }
+//                }
+//            }
+//    
+//    }
+}
 }

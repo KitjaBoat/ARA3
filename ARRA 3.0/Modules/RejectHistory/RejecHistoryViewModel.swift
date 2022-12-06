@@ -10,6 +10,9 @@ import Foundation
 class RejecHistoryViewModel {
     let URL_LOAD_DATA =  "http://app.ar.co.th/AppStoreSystem/files/project/arra_new/13_RejectHistory/Data/JobRejectList/data.json"
     
+    
+
+    
     var jobList: [Job]?
 //    var isFirst = true
     
